@@ -49,10 +49,8 @@ client.on("message", async message => {
     } catch (err) {
       
       console.log(err);
-      
     }
   }
-  
+  }
 });
-
 client.login(process.env.TOKEN); //Ligando o Bot caso ele consiga acessar o token

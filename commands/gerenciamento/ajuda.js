@@ -6,4 +6,6 @@ module.exports.run = async (client, message, args) => {
   .setColor("RANDOM")
   .setDescription("Obrigado por adicionar o SavanaBot ao seu servidor!\nFeito por: @Ofic_Giraffa | Comandos:\n")
   .setFooter("Por: " + message.author.username);
+  
+  message.channel.send(embed_help_1);
 }
