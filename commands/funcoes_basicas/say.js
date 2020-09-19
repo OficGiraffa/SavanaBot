@@ -10,7 +10,7 @@ module.exports.run = async (client, message, args) => {
       try{
         channelToSend.send(sayMessage.replace(channelToSend, ""));
       } finally {
-        message.channel.send("Mensagem de: " + message.author + " enviada com sucesso! 🔥")
+        message.channel.send("Mensagem de: " + message.author.username + " no canal: " + sayMessage.channel + " enviada com sucesso! 🔥")
       }
     }
     
