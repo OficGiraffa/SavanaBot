@@ -8,6 +8,7 @@ module.exports.run = async (client, message, args) => {
   
   let embed = new Discord.MessageEmbed()
   .setTitle(`🖼 Avatar de ${user.username}`)
+  .setDescription(`[clique aqui](${avatar}) para baixar a foto.\n\npatin ajudou tmbm ;)`)
   .setColor("RANDOM")
   .setImage(avatar)
   .setFooter("Por: " + message.author.username);
