@@ -1,10 +1,15 @@
 const Discord = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
+  
+  let user = message.mentions.users.first() || client.users.cache.get(args[0]) || message.author;
+  
+  let avatar = user.displayAvatarURL({ dynamic: true, format: 'png', size: 1024 });
+  
   let embed = new Discord.MessageEmbed()
-  .setTitle("Avatar do usuário")
+  .setTitle(`🖼 Avatar de ${user.username}`)
   .setColor("RANDOM")
-  .setImage(message.author.displayAvatarURL)
+  .setImage(avatar)
   .setFooter("Por: " + message.author.username);
   
   console.log(message.author.displayAvatarURL);
