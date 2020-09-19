@@ -38,9 +38,17 @@ client.on("message", async message => {
       
       return commandFile.run(client, message, args);
       
+    } catch {
+      
+      try {
+      
+      let commandFile = require(`./commands/gerenciamento/${command}.js`);
+      
+      return commandFile.run(client, message, args);
+      
     } catch (err) {
       
-      console.error("Erro: " + err);
+      console.log(err);
       
     }
   }
