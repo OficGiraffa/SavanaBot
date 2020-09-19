@@ -21,8 +21,10 @@ client.on("message", async message => {
   let args = message.content.split(" ").slice(1);
   let command = message.content.split(" ")[0];
   command = command.slice(config.prefix.length);
+  command = command.toLowerCase();
+  
   try {
-    let commandFile = require(`./commands/${command}.js` || `./commands/funcoes_basicas/${command}.js`);
+    let commandFile = require(`./commands/funcoes_basicas/${command}.js`);
     //delete require.cache(require.resolve(`./commands/${command}.js`));
     return commandFile.run(client, message, args);
   } catch (err){
