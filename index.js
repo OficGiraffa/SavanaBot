@@ -25,14 +25,26 @@ client.on("message", async message => {
   
   try {
     let commandFile = require(`./commands/funcoes_basicas/${command}.js`);
+    
     //delete require.cache(require.resolve(`./commands/${command}.js`));
+    
     return commandFile.run(client, message, args);
-  } catch (err){
+    
+  } catch {
+    
     try {
+      
       let commandFile = require(`./commands/diversao/${command}.js`);
+      
+      return commandFile.run(client, message, args);
+      
+    } catch (err) {
+      
+      console.error("Erro: " + err);
+      
     }
-    //console.error("Erro: " + err);
   }
+  
 });
 
 client.login(process.env.TOKEN); //Ligando o Bot caso ele consiga acessar o token
