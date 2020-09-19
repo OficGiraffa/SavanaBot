@@ -3,8 +3,7 @@ const Discord = require("discord.js");
 module.exports.run = async (client, message, args) => {
   const sayMessage = args.join(" ");
   
-  let channelToSend = message.mentions.channels.first;
-  console.log(channel);
+  let channelToSend = message.content.mentions.channels.first;
   
   if (sayMessage !== ""){
     message.delete().catch(() => {});
@@ -14,6 +13,6 @@ module.exports.run = async (client, message, args) => {
     .setColor("RANDOM")
     .setFooter("Por: " + message.author.username);
     
-    channelToSend.send(embed);
+    
   }
 }
