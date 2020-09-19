@@ -13,7 +13,10 @@ module.exports.run = async (client, message, args) => {
     .setColor("RANDOM")
     .setFooter("Por: " + message.author.username);
     
-    
-    channelToSend.send(embed);
+    if (channelToSend != undefined){
+      channelToSend.send(embed);
+    } else{
+      message.channel.send(embed);
+    }
   }
 }
