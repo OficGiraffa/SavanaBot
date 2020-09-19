@@ -2,6 +2,10 @@ const Discord = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
   const sayMessage = args.join(" ");
+  
+  let channel = message.mentions.channels.first;
+  console.log(channel);
+  
   if (sayMessage !== ""){
     message.delete().catch(() => {});
     
