@@ -14,6 +14,7 @@ const config = require("./config.json"); //Pegando o prefixo do bot para respost
 
 client.on("ready", () => {
   console.log("Estou pronto!");
+  
 })
 
 client.on("message", async message => {

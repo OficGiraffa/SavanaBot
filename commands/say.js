@@ -8,9 +8,8 @@ module.exports.run = async (client, message, args) => {
     let embed = new Discord.MessageEmbed()
     .setDescription(sayMessage)
     .setColor("RANDOM")
-    .setFooter("Falado por: " + message.author.username);
+    .setFooter("Por: " + message.author.username);
     
     message.channel.send(embed);
-    
   }
 }
