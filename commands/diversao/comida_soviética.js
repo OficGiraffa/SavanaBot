@@ -7,5 +7,7 @@ module.exports.run = async (client, message, args) => {
   .setColor("RED")
   .setDescription("Desculpe... Não existe... 😥")
   .setImage("https://saude.abril.com.br/wp-content/uploads/2016/10/saude-alimentacao-jejum-prato-67059.jpg")
-  .setFooter("NÓS pedimos: " + message.author.username)
+  .setFooter("NÓS pedimos: " + message.author.username);
+  
+  message.channel.send(embed);
 }
