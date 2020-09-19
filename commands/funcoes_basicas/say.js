@@ -7,7 +7,12 @@ module.exports.run = async (client, message, args) => {
     let channelToSend = message.mentions.channels.first() || message.channel; 
 
     if (sayMessage !== ""){
+      try{
         channelToSend.send(sayMessage.replace(channelToSend, ""));
+      } finally {
+        message.channel.send("Mensagem de: " + message.author + " enviada com sucesso! 🔥")
+      }
     }
+    
   }
 }
