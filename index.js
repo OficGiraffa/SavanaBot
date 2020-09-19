@@ -22,7 +22,7 @@ client.on("message", async message => {
   let command = message.content.split(" ")[0];
   command = command.slice(config.prefix.length);
   try {
-    let commandFile = require(`./commands/${command}.js`);
+    let commandFile = require(`./commands/${command}.js` || `./commands/funcoes_basicas/${command}.js`);
     //delete require.cache(require.resolve(`./commands/${command}.js`));
     return commandFile.run(client, message, args);
   } catch (err){
