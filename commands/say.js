@@ -2,9 +2,15 @@ const Discord = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
   const sayMessage = args.join(" ");
-  let channelToSend = if 
   if (sayMessage !== ""){
     message.delete().catch(() => {});
-    message.channel.send(sayMessage);
+    
+    let embed = new Discord.MessageEmbed()
+    .setDescription(sayMessage)
+    .setColor("RANDOM")
+    .setFooter("Falado por: " + message.author.username);
+    
+    message.channel.send(embed);
+    
   }
 }
