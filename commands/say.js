@@ -1,8 +1,10 @@
 const Discord = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
-  //const sayMessage = args.join(" ");
-  //message.delete().catch(O_o => {});
-  //message.channel.send(sayMessage);
-  message.channel.send("Teste");
+  const sayMessage = args.join(" ");
+  let channelToSend = if 
+  if (sayMessage !== ""){
+    message.delete().catch(() => {});
+    message.channel.send(sayMessage);
+  }
 }
