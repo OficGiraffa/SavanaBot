@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 
-module.exports.run = (client, message, args) => {
+module.exports.run = async (client, message, args) => {
   let result = Math.floor(Math.random() * 2) + 1;
   
   let embed = undefined;
