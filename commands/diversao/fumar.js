@@ -11,4 +11,8 @@ module.exports.run = async (client, message, args) => {
                 client.setTimeout(() => {
                   msg.edit("🚬  💨")}, 8500);
                     client.setTimeout(() => {
-                      msg.edit("🚬    💨")}, 8500);
+                      msg.edit("🚬    💨")}, 9500);
+                        client.setTimeout(() => {
+                          msg.edit("Cheirinho de cancêr, hm! 😋")}, 10000);
+  })
+}
