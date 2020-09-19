@@ -28,7 +28,10 @@ client.on("message", async message => {
     //delete require.cache(require.resolve(`./commands/${command}.js`));
     return commandFile.run(client, message, args);
   } catch (err){
-    console.error("Erro: " + err);
+    try {
+      let commandFile = require(`./commands/diversao/${command}.js`);
+    }
+    //console.error("Erro: " + err);
   }
 });
 
