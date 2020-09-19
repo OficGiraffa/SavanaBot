@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 module.exports.run = async (client, message, args) => {
   const sayMessage = args.join(" ");
   
-  let channel = message.mentions.channels.first;
+  let channelToSend = message.mentions.channels.first;
   console.log(channel);
   
   if (sayMessage !== ""){
@@ -14,6 +14,6 @@ module.exports.run = async (client, message, args) => {
     .setColor("RANDOM")
     .setFooter("Por: " + message.author.username);
     
-    message.channel.send(embed);
+    channelToSend.send(embed);
   }
 }
