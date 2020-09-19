@@ -8,15 +8,10 @@ module.exports.run = async (client, message, args) => {
   if (sayMessage !== ""){
     message.delete().catch(() => {});
     
-    let embed = new Discord.MessageEmbed()
-    .setDescription(sayMessage.replace(channelToSend, ""))
-    .setColor("RANDOM")
-    .setFooter("Por: " + message.author.username);
-    
     if (channelToSend != undefined){
-      channelToSend.send(embed);
+      channelToSend.send(sayMessage.replace(channelToSend, ""));
     } else{
-      message.channel.send(embed);
+      message.channel.send(sayMessage);
     }
   }
 }
