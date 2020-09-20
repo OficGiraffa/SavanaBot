@@ -14,15 +14,26 @@ module.exports.run = async (client, message, args) => {
                   "🚦 - Gerenciamento\n")
   .setFooter("Por: " + message.author.username);
   
-  let messageEmbed1 = await message.channel.send(embed_help_1);
-  messageEmbed1.react("🎭");
-  messageEmbed1.react("🎲");
-  messageEmbed1.react("🚦");
+  let messageEmbed = await message.channel.send(embed_help_1);
+  messageEmbed.react("🎭");
+  messageEmbed.react("🎲");
+  messageEmbed.react("🚦");
 
   client.on("messageReactionAdd", async (reaction, user) => {
     if (reaction.message.partial) await reaction.message.fetch();
     if (reaction.partial) await reaction.fetch();
     
     if (user.bot) return;
+    if (!reaction.message.channel) return;
+    
+    if (reaction.emoji.name === "🎭"){
+      reaction.message.channel.send ("Entrou em diversão");
+    }
+    if (reaction.emoji.name === "🎲"){
+      reaction.message.channel.send ("Entrou em Funções Básicas");
+    }
+    if (reaction.emoji.name === "🚦"){
+      reaction.message.channel.send ("Entrou em Gerenciamento");
+    }
   })
 }
