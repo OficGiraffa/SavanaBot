@@ -1,4 +1,7 @@
 const Discord = require("discord.js");
+const Cheerio = require("cheerio");
+const Request = require("request");
+
 
 module.exports.run = async (client, message, args) => {
   let kissTo = message.mentions.users.first() || message.author;
@@ -6,7 +9,7 @@ module.exports.run = async (client, message, args) => {
   let embed = new Discord.MessageEmbed()
   .setTitle("Beijo amoroso 😍! De " + message.author.username + " para " + "@" + kissTo.username)
   .setColor("PINK")
-  .setImage("https://media.giphy.com/media/l2Je2M4Nfrit0L7sQ/source.gif")
+  //.setImage("https://media.giphy.com/media/l2Je2M4Nfrit0L7sQ/source.gif")
   .setFooter("Por: " + message.author.username);
   
   message.channel.send(embed);
