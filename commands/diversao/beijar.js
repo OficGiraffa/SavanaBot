@@ -20,18 +20,18 @@ function random_gif(){
    let gif_choise = undefined;
   
    var options = {
-        url: "https://giphy.com/search/" + "Kiss",
+        url: "www.dogpile.com/serp?qc=images&q=" + "Kiss Gif",
         method: "GET",
         headers: {
             "Accept": "text/html",
-            "User-Agent": "Giphy"
+            "User-Agent": "Chrome"
         }
     };
   
   Request(options, function(error, response, responseBody) {
-        if (error) {
-            return;
-        }
+        //if (error) {
+            //return;
+        //}
  
  
         $ = Cheerio.load(responseBody);
