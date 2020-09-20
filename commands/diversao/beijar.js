@@ -20,7 +20,7 @@ function random_gif(){
    let gif_choise = undefined;
   
    var options = {
-        url: "www.dogpile.com/serp?qc=images&q=" + "Kiss Gif",
+        url: "http://results.dogpile.com/serp?qc=images&q=" + "Kiss Gif",
         method: "GET",
         headers: {
             "Accept": "text/html",
@@ -43,14 +43,14 @@ function random_gif(){
        
         console.log(urls);
  
-        if (!urls.length) {
+        //if (!urls.length) {
            
-            return;
-        }
+            //return;
+        //}
  
         // Send result
-        gif_choise = urls[Math.floor(Math.random() * urls.length)];
+        let url = urls[0]; //urls[Math.floor(Math.random() * urls.length)]
     });
   
-  return gif_choise;
+  
 }
