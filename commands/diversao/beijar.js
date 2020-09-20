@@ -4,19 +4,10 @@ const Request = require("request");
 
 
 module.exports.run = async (client, message, args) => {
-  let gifKiss = random_gif();
-  let kissTo = message.mentions.users.first() || message.author;
-  
-  let embed = new Discord.MessageEmbed()
-  .setTitle("Beijo amoroso 😍! De " + message.author.username + " para " + "@" + kissTo.username)
-  .setColor("PINK")
-  .setImage(gifKiss)
-  .setFooter("Por: " + message.author.username);
-  
-  message.channel.send(embed);
+  kiss(message);
 }
 
-function random_gif(){
+function kiss(message){
    var options = {
         url: "http://results.dogpile.com/serp?qc=images&q=" + "Kiss Gif",
         method: "GET",
@@ -27,9 +18,9 @@ function random_gif(){
     };
   
   Request(options, function(error, response, responseBody) {
-        //if (error) {
-            //return;
-        //}
+        if (error) {
+            return;
+        }
  
  
         $ = Cheerio.load(responseBody);
@@ -46,14 +37,18 @@ function random_gif(){
             return;
         }
          
-        let gif_choise = urls[Math.floor(Math.random() * urls.length)].then(()=> {
-          return_url(gif_choise);
-        });
-      
-        return_url(gif_choise);
+        let gif_choise = urls[Math.floor(Math.random() * urls.length)];
+    
+        if (gif_choise !== undefined){
+           let kissTo = message.mentions.users.first() || message.author;
+  
+            let embed = new Discord.MessageEmbed()
+            .setTitle("Beijo amoroso 😍! De " + message.author.username + " para " + "@" + kissTo.username)
+            .setColor("PINK")
+            .setImage(gif_choise)
+            .setFooter("Por: " + message.author.username);
+  
+            message.channel.send(embed);
+        }
     });
-}
-
-function return_url(gif_choise){
-  return gif_choise;
 }
