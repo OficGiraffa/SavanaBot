@@ -4,10 +4,10 @@ module.exports.run = async (client, message, args) => {
   let embed_help_1 = new Discord.MessageEmbed()
   .setTitle("Ajuda do bot!")
   .setColor("RANDOM")
-  .setDescription("Obrigado por colocar o SavanaRound`` no seu servidor!\n" +
-                  "O prefixo inicial é: =\n" +
+  .setDescription("Obrigado por colocar o ``SavanaRound`` no seu servidor!\n" +
+                  "O ``prefixo`` inicial é: ``=``\n" +
                   "Comandos:\n" + 
-                  "           ")
+                  "``=beijar``\n``=cara_ou_coroa``\n``=comida_soviética``\n``=fumar``\n")
   .setFooter("Por: " + message.author.username);
   
   message.channel.send(embed_help_1);
