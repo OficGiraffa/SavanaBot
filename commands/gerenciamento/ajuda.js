@@ -9,8 +9,13 @@ module.exports.run = async (client, message, args) => {
                   "Sou um bot de discord feito por @Ofic_Giraffa apenas para estudos.\n" + 
                   "\n" +
                   "💼Comandos:\n" + 
-                  "")
+                  "🎭 - Diversão\n" +
+                  "🎲 - Funções Básicas\n" + 
+                  "🚦 - Gerenciamento\n")
   .setFooter("Por: " + message.author.username);
   
-  message.channel.send(embed_help_1);
+  let messageEmbed1 = await message.channel.send(embed_help_1);
+  messageEmbed1.react("🎭");
+  messageEmbed1.react("🎲");
+  messageEmbed1.react("🚦");
 }
