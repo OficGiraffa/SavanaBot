@@ -4,21 +4,19 @@ const Request = require("request");
 
 
 module.exports.run = async (client, message, args) => {
+  let gifKiss = random_gif();
   let kissTo = message.mentions.users.first() || message.author;
   
   let embed = new Discord.MessageEmbed()
   .setTitle("Beijo amoroso 😍! De " + message.author.username + " para " + "@" + kissTo.username)
   .setColor("PINK")
-  .setImage(random_gif())
+  .setImage(gifKiss)
   .setFooter("Por: " + message.author.username);
   
   message.channel.send(embed);
-  
 }
 
 function random_gif(){
-   let gif = undefined;
-  
    var options = {
         url: "http://results.dogpile.com/serp?qc=images&q=" + "Kiss Gif",
         method: "GET",
@@ -28,7 +26,7 @@ function random_gif(){
         }
     };
   
-  Request(options, gif = function(error, response, responseBody) {
+  Request(options, function(error, response, responseBody) {
         //if (error) {
             //return;
         //}
@@ -48,10 +46,14 @@ function random_gif(){
             return;
         }
          
-        let gif_choise = urls[0];
-    
-    
-        // Send result
-        return gif_choise; //urls[Math.floor(Math.random() * urls.length)]
+        let gif_choise = urls[Math.floor(Math.random() * urls.length)].then(()=> {
+          return_url(gif_choise);
+        });
+      
+        return_url(gif_choise);
     });
+}
+
+function return_url(gif_choise){
+  return gif_choise;
 }
