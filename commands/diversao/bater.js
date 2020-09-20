@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
 
 function slap(message){
    var options = {
-        url: "www.google.com/search?q=" + "Slap Gif",
+        url: "https://www.dogpile.com/serp?q=slap+gifs&sc=xG6MSoci07So10",
         method: "GET",
         headers: {
             "Accept": "text/html",
