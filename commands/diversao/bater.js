@@ -1,14 +1,15 @@
 const Discord = require("discord.js");
-const Request = require("request");
 const Cheerio = require("cheerio");
+const Request = require("request");
+
 
 module.exports.run = async (client, message, args) => {
-  bater(message);
+  slap(message);
 }
 
-function bater(message){
+function slap(message){
    var options = {
-        url: "http://results.dogpile.com/serp?qc=images&q=" + "slap gif",
+        url: "http://results.dogpile.com/serp?qc=images&q=" + "Slap Gif",
         method: "GET",
         headers: {
             "Accept": "text/html",
@@ -31,23 +32,23 @@ function bater(message){
        
         //console.log(urls);
  
-        if (!urls.length) {  
+        if (!urls.length) {
+           
             return;
         }
          
-        let gif_choise = urls[Math.floor(Math.random() * urls.length)]; //um url aleatorio da pagina
-    	
-	      //Aqui já é o uso da url como bem entender
+        let gif_choise = urls[Math.floor(Math.random() * urls.length)];
+    
         if (gif_choise !== undefined){
-          let slapTo = message.mentions.users.first() || message.author.username
-          
-          let embed_slap = new Discord.MessageEmbed()
-          .setTitle("Agora tu tá fudido! " + message.author.username + " bateu em @" + slapTo)
-          .setColor("RED")
-          .setImage(gif_choise)
-          .setFooter("Por: " + message.author.username);
-          
-          
+           let slapTo = message.mentions.users.first() || message.author;
+  
+            let embed = new Discord.MessageEmbed()
+            .setTitle("Agora tu tá fudido! " + message.author.username + " bateu em " + "@" + slapTo.username)
+            .setColor("RED")
+            .setImage(gif_choise)
+            .setFooter("Por: " + message.author.username);
+  
+            message.channel.send(embed);
         }
     });
 }
