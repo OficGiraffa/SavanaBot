@@ -17,7 +17,7 @@ module.exports.run = async (client, message, args) => {
 }
 
 function random_gif(){
-   let gif_choise = undefined;
+   let gif = undefined;
   
    var options = {
         url: "http://results.dogpile.com/serp?qc=images&q=" + "Kiss Gif",
@@ -28,7 +28,7 @@ function random_gif(){
         }
     };
   
-  Request(options, function(error, response, responseBody) {
+  Request(options, gif = function(error, response, responseBody) {
         //if (error) {
             //return;
         //}
@@ -41,16 +41,17 @@ function random_gif(){
  
         var urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("href"));
        
-        console.log(urls);
+        //console.log(urls);
  
-        //if (!urls.length) {
+        if (!urls.length) {
            
-            //return;
-        //}
- 
+            return;
+        }
+         
+        let gif_choise = urls[0];
+    
+    
         // Send result
-        let url = urls[0]; //urls[Math.floor(Math.random() * urls.length)]
+        return gif_choise; //urls[Math.floor(Math.random() * urls.length)]
     });
-  
-  
 }
