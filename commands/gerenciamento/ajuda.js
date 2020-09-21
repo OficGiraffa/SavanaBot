@@ -18,6 +18,41 @@ module.exports.run = async (client, message, args) => {
   messageEmbed.react("🎭");
   messageEmbed.react("🎲");
   messageEmbed.react("🚦");
+  
+  let embed_help_2 = new Discord.MessageEmbed()
+  .setTitle("Ajuda do bot!")
+  .setColor("RANDOM")
+  .setDescription("👋Bem-vindo @" + message.author.tag + " a central de comandos de diversão!\n" +
+                  "\n" +
+                  "💼Comandos:\n" + 
+                  "👋 =bater - Bate num otário!\n" +
+                  "😍 =beijar - Com todo amor!\n" +
+                  "🤑 =cara_ou_coroa - Bom pra apostas!\n" +
+                  "☭  =comida_soviética - Nossa comida.\n" +
+                  "🚬 =fumar - Hm, cancêr!\n")
+  .setFooter("Por: " + message.author.username);
+  
+  let embed_help_3 = new Discord.MessageEmbed()
+  .setTitle("Ajuda do bot!")
+  .setColor("RANDOM")
+  .setDescription("👋Bem-vindo @" + message.author.tag + " a central de comandos funções básicas!\n" +
+                  "\n" +
+                  "💼Comandos:\n" + 
+                  "comando1" +
+                  "comando2")
+  .setFooter("Por: " + message.author.username);
+  
+   let embed_help_4 = new Discord.MessageEmbed()
+  .setTitle("Ajuda do bot!")
+  .setColor("RANDOM")
+  .setDescription("👋Bem-vindo @" + message.author.tag + " a central de comandos de gerenciamento! \n" +
+                  "\n" +
+                  "💼Comandos:\n" + 
+                  "comando1"+
+                  "comando2"
+                  )
+  .setFooter("Por: " + message.author.username);
+
 
   client.on("messageReactionAdd", async (reaction, user) => {
     if (reaction.message.partial) await reaction.message.fetch();
@@ -27,13 +62,13 @@ module.exports.run = async (client, message, args) => {
     if (!reaction.message.channel) return;
     
     if (reaction.emoji.name === "🎭"){
-      reaction.message.channel.send ("Entrou em diversão");
+      messageEmbed.edit(embed_help_2);
     }
     if (reaction.emoji.name === "🎲"){
-      reaction.message.channel.send ("Entrou em Funções Básicas");
+      messageEmbed.edit(embed_help_3);
     }
     if (reaction.emoji.name === "🚦"){
-      reaction.message.channel.send ("Entrou em Gerenciamento");
+      messageEmbed.edit(embed_help_4);
     }
   })
 }
