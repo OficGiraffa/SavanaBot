@@ -9,13 +9,12 @@ module.exports.run = async (client, message, args) => {
     let embed = new Discord.MessageEmbed()
     .setTitle("Agora tu tá fudido! " + message.author.username + " bateu em " + "@" + slapTo.username)
     .setColor("RED")
-    .setImage(gif_slap(client))
+    .setImage(choise_url(client))
     .setFooter("Por: " + message.author.username);
   
     message.channel.send(embed);
 }
 
-function gif_slap(client){
   /*let gifs_url = [
     "https://media.giphy.com/media/mEtSQlxqBtWWA/source.gif",
     "https://media.giphy.com/media/uqSU9IEYEKAbS/source.gif",
@@ -43,7 +42,8 @@ function gif_slap(client){
     "https://media.giphy.com/media/yR9keQc1zB8B2/source.gif",
     "https://media.giphy.com/media/j1zuL4htGTFQY/source.gif"
   ];*/
-  
+
+function get_all_urls (client){
   let msgs = [];
   
   client.guilds.cache.forEach((guild) => {
@@ -59,9 +59,13 @@ function gif_slap(client){
       });
     }
   });
+  return msgs;
+}
+
+function choise_url (client){
+  let msgs = get_all_urls(client);
   
-  if (msgs.lenght === 4) {
-    let i = Math.floor(Math.random() * msgs.length);
-    return msgs[i];
-  }
+  let i = Math.floor(Math.random() * msgs.length);
+  console.log(msgs);
+  return msgs[i];
 }
