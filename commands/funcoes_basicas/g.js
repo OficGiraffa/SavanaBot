@@ -7,9 +7,13 @@ module.exports.run = async (client, message, args) => {
 function guild_princ(client){
   client.guilds.cache.forEach((guild) => {
     if (guild.name === "a Teste Bot"){
-      console.log(guild.channels.cache.forEach(channel => {
-        
-      }));
+      guild.channels.cache.forEach(channel => {
+        if (channel.name === "imgs"){
+          channel.messages.fetch().then((results) => {
+            console.log(results);
+          })
+        }
+      });
     }
   });
 }
