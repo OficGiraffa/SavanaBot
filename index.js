@@ -21,6 +21,10 @@ client.on("ready", async message => {
   client.user.setActivity(status[Math.floor(Math.random() * status.length)]);
 })
 
+client.on("guildMemberAdd", member => {
+  member.guild.channels.get("739898220309643274").reply("BEM VINDO OTARIUKSKSKSKKAHA");
+});
+
 client.on("message", async message => {
   if (message.author.bot) return;
   if (message.channel.type === "dm") return;
