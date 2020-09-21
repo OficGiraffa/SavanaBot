@@ -15,7 +15,8 @@ module.exports.run = async (client, message, args) => {
     message.channel.send(embed);
 }
 
-  /*let gifs_url = [
+function choise_url (client){
+  let urls = [
     "https://media.giphy.com/media/mEtSQlxqBtWWA/source.gif",
     "https://media.giphy.com/media/uqSU9IEYEKAbS/source.gif",
     "https://media.giphy.com/media/irU9BlmqEwZwc/source.gif",
@@ -41,32 +42,8 @@ module.exports.run = async (client, message, args) => {
     "https://media.giphy.com/media/11pCu5oiegYkAo/source.gif",
     "https://media.giphy.com/media/yR9keQc1zB8B2/source.gif",
     "https://media.giphy.com/media/j1zuL4htGTFQY/source.gif"
-  ];*/
-
-function get_all_urls (client){
-  let msgs = [];
+  ];
   
-  client.guilds.cache.forEach((guild) => {
-    if (guild.name === "a Teste Bot"){
-      guild.channels.cache.forEach(channel => {
-        if (channel.name === "imgs"){
-          channel.messages.fetch().then((results) => {
-            results.forEach(msg => {
-              msgs.push(msg.content);
-              console.log(msgs);
-            });
-          })
-        }
-      });
-    }
-  });
-  
-  return msgs;
-}
-
-function choise_url (client){
-  let msgs = get_all_urls(client);
-  let i = Math.floor(Math.random() * msgs.length);
-  console.log(msgs[0]);
-  return msgs[i];
+  let i = Math.floor(Math.random() * urls.length);
+  return urls[i];
 }
