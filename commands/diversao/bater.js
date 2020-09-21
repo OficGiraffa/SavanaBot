@@ -9,12 +9,10 @@ module.exports.run = async (client, message, args) => {
     let embed = new Discord.MessageEmbed()
     .setTitle("Agora tu tá fudido! " + message.author.username + " bateu em " + "@" + slapTo.username)
     .setColor("RED")
-    .setImage(gif_slap())
+    .setImage(gif_slap(client))
     .setFooter("Por: " + message.author.username);
   
     message.channel.send(embed);
-  
-    gif_slap(client);
 }
 
 function gif_slap(client){
@@ -62,7 +60,8 @@ function gif_slap(client){
     }
   });
   
-  let i = Math.floor(Math.random() * gifs_url.length);
-  
-  return gifs_url[i];
+  if (msgs.lenght === 4) {
+    let i = Math.floor(Math.random() * msgs.length);
+    return msgs[i];
+  }
 }
