@@ -67,6 +67,6 @@ function get_all_urls (client){
 function choise_url (client){
   let msgs = get_all_urls(client);
   let i = Math.floor(Math.random() * msgs.length);
-  console.log(msgs[i]);
+  console.log(msgs[0]);
   return msgs[i];
 }
