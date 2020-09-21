@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
     let embed = new Discord.MessageEmbed()
     .setTitle("Agora tu tá fudido! " + message.author.username + " bateu em " + "@" + slapTo.username)
     .setColor("RED")
-    .setImage(choise_url(client))
+    .setImage(get_all_urls(client))
     .setFooter("Por: " + message.author.username);
   
     message.channel.send(embed);
@@ -53,19 +53,20 @@ function get_all_urls (client){
           channel.messages.fetch().then((results) => {
             results.forEach(msg => {
               msgs.push(msg.content);
+              console.log(msgs);
             });
           })
         }
       });
     }
   });
-  return msgs;
+  if (msgs.lenght === 4){
+    choise_url(msgs)
+    console.log(msgs);
+  }
 }
 
-function choise_url (client){
-  let msgs = get_all_urls(client);
-  
+function choise_url (msgs){
   let i = Math.floor(Math.random() * msgs.length);
-  console.log(msgs);
   return msgs[i];
 }
