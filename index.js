@@ -18,7 +18,10 @@ client.on("ready", async message => {
     "Prefixo inicial: =",
     "Digite: =ajuda para ajuda"
   ];
-  client.user.setActivity(status[Math.floor(Math.random() * status.length)]);
+  setInterval(() => {
+    client.user.setActivity(status[Math.floor(Math.random() * status.length)]);
+  }, 10000);
+  
 })
 
 client.on("guildMemberAdd", member => {
