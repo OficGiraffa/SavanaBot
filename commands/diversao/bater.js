@@ -14,11 +14,11 @@ module.exports.run = async (client, message, args) => {
   
     message.channel.send(embed);
   
-    gif_slap();
+    gif_slap(client);
 }
 
-function gif_slap(){
-  let gifs_url = [
+function gif_slap(client){
+  /*let gifs_url = [
     "https://media.giphy.com/media/mEtSQlxqBtWWA/source.gif",
     "https://media.giphy.com/media/uqSU9IEYEKAbS/source.gif",
     "https://media.giphy.com/media/irU9BlmqEwZwc/source.gif",
@@ -44,7 +44,23 @@ function gif_slap(){
     "https://media.giphy.com/media/11pCu5oiegYkAo/source.gif",
     "https://media.giphy.com/media/yR9keQc1zB8B2/source.gif",
     "https://media.giphy.com/media/j1zuL4htGTFQY/source.gif"
-  ];
+  ];*/
+  
+  let msgs = [];
+  
+  client.guilds.cache.forEach((guild) => {
+    if (guild.name === "a Teste Bot"){
+      guild.channels.cache.forEach(channel => {
+        if (channel.name === "imgs"){
+          channel.messages.fetch().then((results) => {
+            results.forEach(msg => {
+              msgs.push(msg.content);
+            });
+          })
+        }
+      });
+    }
+  });
   
   let i = Math.floor(Math.random() * gifs_url.length);
   
