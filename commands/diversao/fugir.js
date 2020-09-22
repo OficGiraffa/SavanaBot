@@ -40,9 +40,18 @@ function kiss(message){
         let gif_choise = urls[Math.floor(Math.random() * urls.length)];
     
         if (gif_choise !== undefined){
-            let runFrom = message.mentions.users.first();
-          
-            let desc = runFrom ===   
+            let runFrom = message.mentions.users.first() || message.author;
+            
+            let desc = Promise(() => {
+              
+            })
+              if (runFrom.id === message.author.id) {
+                return `Não fuja dos seus problemas! Encare-os! <@${message.author.id}> fugiu dele mesmo! :(`
+              } else {
+                return `Vou é sair daqui! <@${message.author.id}> fugiu de <@${runFrom}>`;
+              }
+            }
+            
           
             let embed = new Discord.MessageEmbed()
             .setDescription(desc)
