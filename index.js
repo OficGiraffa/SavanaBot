@@ -28,7 +28,12 @@ client.on("message", async message => {
   if (message.author.bot) return;
   if (message.channel.type === "dm") return;
   if (!message.content.startsWith(config.prefix)) return;
-  //if (message.content.startsWith(`<@!${client.user.id}`) || message.content.startsWith(`<@${client.user.id}`)) return;
+  if (message.content.startsWith(`<@!${client.user.id}`) || message.content.startsWith(`<@${client.user.id}`)) return;
+  
+  let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
+  if (!prefixes[message.guild.id]){
+    
+  }
   
   let args = message.content.split(" ").slice(1);
   let command = message.content.split(" ")[0];
