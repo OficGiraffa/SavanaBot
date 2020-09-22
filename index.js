@@ -23,6 +23,7 @@ client.on("ready", async message => {
     client.user.setActivity(status[Math.floor(Math.random() * status.length)]);
   }, 10000);
   
+  client.guilds.get("738458523775533177").channels.get()  
 })
 
 client.on("message", async message => {
