@@ -36,7 +36,7 @@ client.on("message", async message => {
   command = command.toLowerCase();
   
   try {
-    let commandFile = require(`./commands/funcoes_basicas/${command}.js`);
+    let commandFile = require(`./commands/utilidades/${command}.js`);
     
     //delete require.cache(require.resolve(`./commands/${command}.js`));
     
