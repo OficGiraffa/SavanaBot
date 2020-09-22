@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args) => {
     let channelToSend = message.mentions.channels.first() || message.channel; 
   
     if (!args[0]){
-      message.channel.send(`<a<a:alert:753135168255950850>753135168255950850> Como vou falar se não tenho nada pra falar? 🤔`);
+      return message.channel.send(`<a:alerta:744938823368048702> Como vou falar se não tenho nada pra falar? 🤔`);
     }
     
     try{

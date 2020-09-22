@@ -23,7 +23,13 @@ client.on("ready", async message => {
     client.user.setActivity(status[Math.floor(Math.random() * status.length)]);
   }, 10000);
   
-  client.guilds.get("738458523775533177").channels.get()  
+  let embed_status = new Discord.MessageEmbed()
+  .setTitle("Status: Ligado ou reiniciado")
+  .setDescription("Estou pronto para uso!")
+  .setColor("GREEN")
+  .setFooter("SavanaBot_Status");
+  
+  client.guilds.cache.get("738458523775533177").channels.cache.get("758101838116683826").send(embed_status);
 })
 
 client.on("message", async message => {
