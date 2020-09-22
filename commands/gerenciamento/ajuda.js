@@ -60,7 +60,7 @@ module.exports.run = async (client, message, args) => {
     if (user.bot) return;
     if (!reaction.message.channel) return;
     
-    if (reaction.author.id === message.author.id){
+    if (user.id === message.author.id){
       if (reaction.emoji.name === "🎭"){
         messageEmbed.edit(embed_help_2);
       }
