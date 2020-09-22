@@ -6,13 +6,10 @@ module.exports.run = async (client, message, args) => {
     return message.channel.send(`Desculpe <@${message.author.id}> você não tem permissão para isso!`);
   if (!args[0]) return message.channel.send(`Desculpe <@${message.author.id}> você não colocou nenhum prefixo para poder modificar!`);
   
-  let prefixes = JSON.parse(Fs.readFileSync("../../prefixes.json", "utf8"));
+  let prefixes = JSON.parse(Fs.readFileSync("././prefixes.json", "utf8"));
   
   prefixes[message.guild.id] = {
     prefixes: args[0]
   };
-  
-  Fs.writeFile("../../prefixes.json", JSON.stringify(prefixes), (err) => {
-    console.log(err);
-  })
+
 }
