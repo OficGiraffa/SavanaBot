@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
 
 function kiss(message){
    var options = {
-        url: "http://results.dogpile.com/serp?qc=images&q=" + "Killing gif",
+        url: "http://results.dogpile.com/serp?qc=images&q=" + "Kill gif",
         method: "GET",
         headers: {
             "Accept": "text/html",
@@ -43,7 +43,7 @@ function kiss(message){
            let killTo = message.mentions.users.first() || message.author;
   
             let embed = new Discord.MessageEmbed()
-            .setTitle(`Nunca serei pego HAHAHA👿! <@${message.author.id}> MATOU <@${killTo.id}>`)
+            .setDescription(`Nunca serei pego HAHAHA👿! <@${message.author.id}> MATOU <@${killTo.id}>`)
             .setColor("PINK")
             .setImage(gif_choise)
             .setFooter("Por: " + message.author.username);
