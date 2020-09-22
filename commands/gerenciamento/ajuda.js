@@ -4,7 +4,7 @@ module.exports.run = async (client, message, args) => {
   let embed_help_1 = new Discord.MessageEmbed()
   .setTitle("Ajuda do bot!")
   .setColor("RANDOM")
-  .setDescription("👋Bem-vindo @" + message.author.tag + " a central de ajuda e comandos!\n" +
+  .setDescription(`👋Bem vindo ` +
                   "👉Sobre mim: \n" +
                   "Sou um bot de discord feito por @Ofic_Giraffa apenas para estudos.\n" + 
                   "\n" +
@@ -15,6 +15,7 @@ module.exports.run = async (client, message, args) => {
   .setFooter("Por: " + message.author.username);
   
   let messageEmbed = await message.channel.send(embed_help_1);
+  messageEmbed.react("⬅️");
   messageEmbed.react("🎭");
   messageEmbed.react("🎲");
   messageEmbed.react("🚦");
@@ -38,8 +39,8 @@ module.exports.run = async (client, message, args) => {
   .setDescription("👋Bem-vindo @" + message.author.tag + " a central de comandos funções básicas!\n" +
                   "\n" +
                   "💼Comandos:\n" + 
-                  "comando1" +
-                  "comando2")
+                  "😶 =avatar - Mostra o seu avatar ou de alguém mencionado\n" +
+                  "😀 =falar - Fala algo no mesmo canal escrito este comando ou num mencionado\n")
   .setFooter("Por: " + message.author.username);
   
    let embed_help_4 = new Discord.MessageEmbed()
@@ -48,8 +49,7 @@ module.exports.run = async (client, message, args) => {
   .setDescription("👋Bem-vindo @" + message.author.tag + " a central de comandos de gerenciamento! \n" +
                   "\n" +
                   "💼Comandos:\n" + 
-                  "comando1"+
-                  "comando2"
+                  "✋ =ajuda - Ajuda ;)"
                   )
   .setFooter("Por: " + message.author.username);
 
@@ -69,6 +69,9 @@ module.exports.run = async (client, message, args) => {
     }
     if (reaction.emoji.name === "🚦"){
       messageEmbed.edit(embed_help_4);
+    }
+    if (reaction.emoji.name === "⬅️"){
+      messageEmbed.edit(embed_help_1);
     }
   })
 }
