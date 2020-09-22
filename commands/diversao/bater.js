@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args) => {
     let slapTo = message.mentions.users.first() || message.author;
   
     let embed = new Discord.MessageEmbed()
-    .setTitle("Agora tu tá fudido! " + message.author.username + " bateu em " + "@" + slapTo.username)
+    .setTitle(`Agora tu tá fudido👊! <@${message.author.id}> bateu em <@${slapTo.id}>`)
     .setColor("RED")
     .setImage(choise_url(client))
     .setFooter("Por: " + message.author.username);
