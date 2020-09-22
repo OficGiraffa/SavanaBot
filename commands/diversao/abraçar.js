@@ -40,10 +40,18 @@ function kiss(message){
         let gif_choise = urls[Math.floor(Math.random() * urls.length)];
     
         if (gif_choise !== undefined){
-           let hug = message.mentions.users.first() || message.author;
-  
+            let hug = message.mentions.users.first() || message.author;
+            
+            let desc = () => {
+              if (hug.id === message.author.id){
+                return `Estou muito carente :( <@${message.author.id}> se abraçou! :/`
+              } else{
+                return `Amo abraços quentinhos! <@${message.author.id}> abraçou <@${hug.id}>`
+              }
+            }
+          
             let embed = new Discord.MessageEmbed()
-            .setDescription(`Amo abraços quentinhos! <@${message.author.id}> abraçou <@${hug.id}>`)
+            .setDescription(desc())
             .setColor("RED")
             .setImage(gif_choise)
             .setFooter("Por: " + message.author.username);

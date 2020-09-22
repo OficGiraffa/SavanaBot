@@ -42,9 +42,7 @@ function kiss(message){
         if (gif_choise !== undefined){
             let runFrom = message.mentions.users.first() || message.author;
             
-            let desc = Promise(() => {
-              
-            })
+            let desc = () => {
               if (runFrom.id === message.author.id) {
                 return `Não fuja dos seus problemas! Encare-os! <@${message.author.id}> fugiu dele mesmo! :(`
               } else {
@@ -54,7 +52,7 @@ function kiss(message){
             
           
             let embed = new Discord.MessageEmbed()
-            .setDescription(desc)
+            .setDescription(desc())
             .setColor("BLUE")
             .setImage(gif_choise)
             .setFooter("Por: " + message.author.username);

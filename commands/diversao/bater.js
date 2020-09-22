@@ -5,9 +5,17 @@ const Request = require("request");
 
 module.exports.run = async (client, message, args) => {
     let slapTo = message.mentions.users.first() || message.author;
+    
+    let desc = () => {
+      if (slapTo.id === message.author.id){
+        return `Não se bata! <@${message.author.id}> bateu nele mesmo!`
+      } else {
+        return `Agora tu tá fudido👊! <@${message.author.id}> bateu em <@${slapTo.id}>`;
+      }
+    }
   
     let embed = new Discord.MessageEmbed()
-    .setDescription(`Agora tu tá fudido👊! <@${message.author.id}> bateu em <@${slapTo.id}>`)
+    .setDescription(desc())
     .setColor("RED")
     .setImage(choise_url(client))
     .setFooter("Por: " + message.author.username);
