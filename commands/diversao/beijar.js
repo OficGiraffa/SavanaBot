@@ -42,21 +42,17 @@ function kiss(message){
         if (gif_choise !== undefined){
            let kissTo = message.mentions.users.first() || message.author;
             
-            let desc = () => {
-              if (kissTo.id === message.author.id){
-                return ;
-              } else {
-                return `Beijo amoroso😍! <@${message.author.id}> beijou <@${kissTo.id}>`;
-              }
+            if (kissTo.id !== message.author.id){
+              let embed = new Discord.MessageEmbed()
+              .setDescription(`Beijo amoroso😍! <@${message.author.id}> beijou <@${kissTo.id}>`)
+              .setColor("PINK")
+              .setImage(gif_choise)
+              .setFooter("Por: " + message.author.username);
+
+              message.channel.send(embed);
+            } else {
+              message.reply("Desculpe! É impossível você beijar seu próprio rosto! Mencione alguém! 😒");
             }
-          
-            let embed = new Discord.MessageEmbed()
-            .setDescription(desc())
-            .setColor("PINK")
-            .setImage(gif_choise)
-            .setFooter("Por: " + message.author.username);
-  
-            message.channel.send(embed);
         }
     });
 }
