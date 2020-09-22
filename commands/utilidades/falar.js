@@ -14,7 +14,8 @@ module.exports.run = async (client, message, args) => {
       } finally {
         message.channel.send(`Mensagem de <@${message.author.id}> no canal <#${channelToSend.id}> enviada com sucesso!🔥`);
       } 
-    }
-    
+    } 
+  } else {
+    message.author.reply(`Desculpe <@${message.author.id}>! Você não tem permissão pra isso!`);
   }
 }

@@ -30,14 +30,17 @@ client.on("message", async message => {
   if (!message.content.startsWith(config.prefix)) return;
   if (message.content.startsWith(`<@!${client.user.id}`) || message.content.startsWith(`<@${client.user.id}`)) return;
   
-  let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
+  let prefixes = JSON.parse(Discord.readFileSync("./prefixes.json", "utf8"));
   if (!prefixes[message.guild.id]){
-    
+    prefixes[message.guild.id] = {
+      prefixes: config.prefix
+    }
   }
   
+  let prefix = prefixes[message.guild.id].prefixes;
   let args = message.content.split(" ").slice(1);
   let command = message.content.split(" ")[0];
-  command = command.slice(config.prefix.length);
+  command = command.slice(prefix.length);
   command = command.toLowerCase();
   
   try {
