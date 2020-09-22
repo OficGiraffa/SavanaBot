@@ -43,7 +43,7 @@ function kiss(message){
            let runFrom = message.mentions.users.first() || message.author;
   
             let embed = new Discord.MessageEmbed()
-            .setTitle("Vo embora daqui!! " + message.author.username + " fugiu de " + "@" + runFrom.username)
+            .setDescription(`Vou embora daqui! <@${message.author.id}> fugiu de <@${runFrom.id}>`)
             .setColor("BLUE")
             .setImage(gif_choise)
             .setFooter("Por: " + message.author.username);

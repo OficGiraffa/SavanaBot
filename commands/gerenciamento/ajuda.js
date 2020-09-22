@@ -28,6 +28,7 @@ module.exports.run = async (client, message, args) => {
                   "💼Comandos:\n" + 
                   "👋 =bater - Bate num otário!\n" +
                   "😍 =beijar - Com todo amor!\n" +
+                  "🏃 =fugir - Use para correr de alguém! O mencione.\n" +
                   "🤑 =cara_ou_coroa - Bom pra apostas!\n" +
                   "☭  =comida_soviética - Nossa comida.\n" +
                   "🚬 =fumar - Hm, cancêr!\n")
