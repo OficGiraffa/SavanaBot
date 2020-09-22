@@ -11,6 +11,7 @@ app.listen(process.env.PORT); // Recebe solicitações que o deixa online
 const Discord = require("discord.js"); //Conexão com a livraria Discord.js
 const client = new Discord.Client(); //Criação de um novo Client
 const config = require("./config.json"); //Pegando o prefixo do bot para respostas de comandos
+const Fs = require("fs");
 
 client.on("ready", async message => {
   let status = [
@@ -30,7 +31,7 @@ client.on("message", async message => {
   if (!message.content.startsWith(config.prefix)) return;
   if (message.content.startsWith(`<@!${client.user.id}`) || message.content.startsWith(`<@${client.user.id}`)) return;
   
-  let prefixes = JSON.parse(Discord.readFileSync("./prefixes.json", "utf8"));
+  let prefixes = JSON.parse(Fs.readFileSync("./prefixes.json", "utf8"));
   if (!prefixes[message.guild.id]){
     prefixes[message.guild.id] = {
       prefixes: config.prefix
