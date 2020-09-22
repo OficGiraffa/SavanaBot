@@ -4,7 +4,7 @@ module.exports.run = async (client, message, args) => {
   let embed_help_1 = new Discord.MessageEmbed()
   .setTitle("Ajuda do bot!")
   .setColor("RANDOM")
-  .setDescription(`👋Bem vindo ` +
+  .setDescription(`👋Bem vindo <@${message.author.id}> a central de ajuda e comandos do SavanaBot!\n` +
                   "👉Sobre mim: \n" +
                   "Sou um bot de discord feito por @Ofic_Giraffa apenas para estudos.\n" + 
                   "\n" +
@@ -57,6 +57,7 @@ module.exports.run = async (client, message, args) => {
   client.on("messageReactionAdd", async (reaction, user) => {
     if (reaction.message.partial) await reaction.message.fetch();
     if (reaction.partial) await reaction.fetch();
+    if (reaction.author !== message.author) return;
     
     if (user.bot) return;
     if (!reaction.message.channel) return;
