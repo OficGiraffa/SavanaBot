@@ -40,17 +40,15 @@ function kiss(message){
         let gif_choise = urls[Math.floor(Math.random() * urls.length)];
     
         if (gif_choise !== undefined){
-            let runFrom = message.mentions.users.first() || message.author;
-  
+            let runFrom = message.mentions.users.first();
+          
+            let desc = runFrom ===   
+          
             let embed = new Discord.MessageEmbed()
+            .setDescription(desc)
             .setColor("BLUE")
             .setImage(gif_choise)
             .setFooter("Por: " + message.author.username);
-            if (!runFrom.id === message.author.id){
-              embed.setDescription(`Vou embora daqui! <@${message.author.id}> fugiu de <@${runFrom.id}>`);
-            }else{
-              embed.setDescription(`Não fuja dos seus problemas! Encare-os! <@${message.author.id}> fugiu dele mesmo :( `);
-            }
           
             message.channel.send(embed);
         }

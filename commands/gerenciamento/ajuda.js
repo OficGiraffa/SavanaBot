@@ -6,7 +6,7 @@ module.exports.run = async (client, message, args) => {
   .setColor("RANDOM")
   .setDescription(`👋Bem vindo <@${message.author.id}> a central de ajuda e comandos do SavanaBot!\n` +
                   "👉Sobre mim: \n" +
-                  "Sou um bot de discord feito por @Ofic_Giraffa apenas para estudos.\n" + 
+                  "Sou um bot de discord feito por @Ofic_Giraffa (Com a ajuda de Patin) apenas para estudos.\n" + 
                   "\n" +
                   "💼Comandos:\n" + 
                   "🎭 - Diversão\n" +
