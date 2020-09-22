@@ -57,22 +57,22 @@ module.exports.run = async (client, message, args) => {
   client.on("messageReactionAdd", async (reaction, user) => {
     if (reaction.message.partial) await reaction.message.fetch();
     if (reaction.partial) await reaction.fetch();
-    if (reaction.author !== message.author) return;
-    
     if (user.bot) return;
     if (!reaction.message.channel) return;
     
-    if (reaction.emoji.name === "🎭"){
-      messageEmbed.edit(embed_help_2);
-    }
-    if (reaction.emoji.name === "🎲"){
-      messageEmbed.edit(embed_help_3);
-    }
-    if (reaction.emoji.name === "🚦"){
-      messageEmbed.edit(embed_help_4);
-    }
-    if (reaction.emoji.name === "⬅️"){
-      messageEmbed.edit(embed_help_1);
+    if (reaction.author.id === message.author.id){
+      if (reaction.emoji.name === "🎭"){
+        messageEmbed.edit(embed_help_2);
+      }
+      if (reaction.emoji.name === "🎲"){
+        messageEmbed.edit(embed_help_3);
+      }
+      if (reaction.emoji.name === "🚦"){
+        messageEmbed.edit(embed_help_4);
+      }
+      if (reaction.emoji.name === "⬅️"){
+        messageEmbed.edit(embed_help_1);
+      }
     }
   })
 }
