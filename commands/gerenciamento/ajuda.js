@@ -10,7 +10,7 @@ module.exports.run = async (client, message, args) => {
                   "\n" +
                   "💼Comandos:\n" + 
                   "🎭 - Diversão\n" +
-                  "🎲 - Funções Básicas\n" + 
+                  "🎲 - Utilidades\n" + 
                   "🚦 - Gerenciamento\n")
   .setFooter("Por: " + message.author.username);
   
@@ -39,7 +39,7 @@ module.exports.run = async (client, message, args) => {
   let embed_help_3 = new Discord.MessageEmbed()
   .setTitle("Ajuda do bot!")
   .setColor("RANDOM")
-  .setDescription("👋Bem-vindo @" + message.author.tag + " a central de comandos funções básicas!\n" +
+  .setDescription("👋Bem-vindo @" + message.author.tag + " a central de comandos utilidades!\n" +
                   "\n" +
                   "💼Comandos:\n" + 
                   "😶 =avatar - Mostra o seu avatar ou de alguém mencionado\n" +
