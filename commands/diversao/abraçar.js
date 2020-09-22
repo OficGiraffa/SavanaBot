@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
 
 function kiss(message){
    var options = {
-        url: "http://results.dogpile.com/serp?qc=images&q=" + "Kiss Gif",
+        url: "http://results.dogpile.com/serp?qc=images&q=" + "Hug gif",
         method: "GET",
         headers: {
             "Accept": "text/html",
@@ -40,11 +40,11 @@ function kiss(message){
         let gif_choise = urls[Math.floor(Math.random() * urls.length)];
     
         if (gif_choise !== undefined){
-           let kissTo = message.mentions.users.first() || message.author;
+           let hug = message.mentions.users.first() || message.author;
   
             let embed = new Discord.MessageEmbed()
-            .setTitle(`Beijo amoroso😍! <@${message.author.id}> beijou <@${kissTo.id}>`)
-            .setColor("PINK")
+            .setDescription(`Amo abraços quentinhos! <@${message.author.id}> abraçou <@${hug.id}>`)
+            .setColor("RED")
             .setImage(gif_choise)
             .setFooter("Por: " + message.author.username);
   

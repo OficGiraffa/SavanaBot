@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
 
 function kiss(message){
    var options = {
-        url: "http://results.dogpile.com/serp?qc=images&q=" + "Run Gif",
+        url: "http://results.dogpile.com/serp?qc=images&q=" + "Run from Gif",
         method: "GET",
         headers: {
             "Accept": "text/html",
