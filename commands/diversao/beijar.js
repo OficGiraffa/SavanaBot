@@ -43,7 +43,7 @@ function kiss(message){
            let kissTo = message.mentions.users.first() || message.author;
   
             let embed = new Discord.MessageEmbed()
-            .setTitle(`Beijo amoroso😍! <@${message.author.id}> beijou <@${kissTo.id}>`)
+            .setDescription(`Beijo amoroso😍! <@${message.author.id}> beijou <@${kissTo.id}>`)
             .setColor("PINK")
             .setImage(gif_choise)
             .setFooter("Por: " + message.author.username);
