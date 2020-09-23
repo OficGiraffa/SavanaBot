@@ -4,8 +4,7 @@ module.exports.run = async (client, message, args) => {
   let channel_lock = message.mentions.channels.first() || message.channel;
   
   try {
-    console.log(message.guild.roles.cache);
-    channel_lock.overwritePermissions({
+    channel_lock.overwritePermissions(message.guild.roles.cache.get(message.guild.id), {
       SEND_MESSAGES: false,
       VIEW_CHANNEL: false
     })
