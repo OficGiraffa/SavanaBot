@@ -23,9 +23,11 @@ client.on("ready", async message => {
     client.user.setActivity(status[Math.floor(Math.random() * status.length)]);
   }, 10000);
   
+  let servers = client.guilds.cache.size
+  
   let embed_status = new Discord.MessageEmbed()
   .setTitle("Status: Ligado ou reiniciado")
-  .setDescription("Estou pronto para uso!")
+  .setDescription(`Sou o SavanaBot! Estou em ${servers} servers e estou pronto para uso!`)
   .setColor("GREEN")
   .setFooter("SavanaBot_Status");
   
