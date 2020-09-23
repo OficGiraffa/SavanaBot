@@ -32,7 +32,8 @@ module.exports.run = async (client, message, args) => {
                   "🤗 =abraçar - Abreçe seu amiguinho!\n" +
                   "🤑 =cara_ou_coroa - Bom pra apostas!\n" +
                   "☭  =comida_soviética - Nossa comida.\n" +
-                  "🚬 =fumar - Hm, cancêr!\n")
+                  "🚬 =fumar - Hm, cancêr!\n" +
+                  "😎 =super_xandão - faça o super xandão falar algo!\n")
   .setFooter("Por: " + message.author.username);
   
   let embed_help_3 = new Discord.MessageEmbed()
