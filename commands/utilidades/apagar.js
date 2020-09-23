@@ -9,8 +9,6 @@ module.exports.run = async (client, message, args) => {
   try {
     message.channel.bulkDelete(msg_clear);
   } finally {
-    message.channel.send(`${msg_clear} mensagens apagadas com sucesso`).then(() => {
-      
-    })
+    let msg = message.channel.send(`${msg_clear} mensagens apagadas com sucesso`);
   }
 }
