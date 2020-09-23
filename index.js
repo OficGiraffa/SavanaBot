@@ -35,14 +35,14 @@ client.on("ready", async message => {
   
   client.guilds.cache.get("738458523775533177").channels.cache.get("758101838116683826").send(embed_status);
   
-  client.guilds.cache.get("738458523775533177").channels.cache.get("758101838116683826").setTopic(client.guilds.cache.get("738458523775533177").memberCount);
+  client.guilds.cache.get("738458523775533177").channels.cache.get("739847372116459592").setTopic("Membros: " + client.guilds.cache.get("738458523775533177").memberCount);
 })
 
 client.on("guildMemberAdd", async member => {
-  client.guilds.cache.get("738458523775533177").channels.cache.get("758101838116683826").setTopic(client.guilds.cache.get("738458523775533177").memberCount);
+  client.guilds.cache.get("738458523775533177").channels.cache.get("739847372116459592").setTopic("Membros: " + client.guilds.cache.get("738458523775533177").memberCount);
 })
 client.on("guildMemberRemove", async member => {
-  client.guilds.cache.get("738458523775533177").channels.cache.get("758101838116683826").setTopic(client.guilds.cache.get("738458523775533177").memberCount);
+  client.guilds.cache.get("738458523775533177").channels.cache.get("739847372116459592").setTopic("Membros: " + client.guilds.cache.get("738458523775533177").memberCount);
 })
 
 client.on("message", async message => {
