@@ -43,7 +43,10 @@ module.exports.run = async (client, message, args) => {
                   "\n" +
                   "💼Comandos:\n" + 
                   "😶 =avatar - Mostra o seu avatar ou de alguém mencionado\n" +
-                  "😀 =falar - Fala algo no mesmo canal escrito este comando ou num mencionado\n")
+                  "😀 =falar - Fala algo no mesmo canal escrito este comando ou num mencionado\n" +
+                  "👻 =apagar - Apaga mensagens no canal digitado. Coloque o número de mensagens a apagar ou nenhum para apagar uma\n" +
+                  "🤚 =fechar_canal - Não deixa as pessoas digitarem no canal especificado ou no mesmo digitado\n" +
+                  "👍 =abrir_canal - Deixa as pessoas digitarem no canal especificado ou no mesmo digitado\n")
   .setFooter("Por: " + message.author.username);
   
    let embed_help_4 = new Discord.MessageEmbed()
