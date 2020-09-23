@@ -8,8 +8,10 @@ module.exports.run = async (client, message, args) => {
   }
   message.channel.createWebhook("SUPER XANDÃO", {
     avatar: "https://pbs.twimg.com/profile_images/1306776294278004736/64yfTxt9_400x400.jpg",
-  }).then((xandao) => {
-    xandao.send(msg);
+  }).then(async (xandao) => {
+    xandao.send(msg).then(async () => {
+      msg.delete()
+    });
   })
   message.delete();
 }
