@@ -34,10 +34,6 @@ client.on("ready", async message => {
   .setFooter("SavanaBot_Status");
   
   client.guilds.cache.get("738458523775533177").channels.cache.get("758101838116683826").send(embed_status);
-  
-  for (let i; ;i++){
-    client.guilds.cache.get("738458523775533177").
-  }
 })
 
 client.on("message", async message => {
