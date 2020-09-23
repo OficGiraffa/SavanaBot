@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args) => {
     try {
        channel_open.overwritePermissions([{
          id: message.guild.roles.everyone.id,
-         allow: ['SEND_MESSAGES']
+         allow: ['SEND_MESSAGES', 'VIEW_CHANNEL']
        }]);
     } finally {
       message.channel.send(`<#${channel_open.id}> aberto com sucesso! 🔥`);
