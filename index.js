@@ -87,10 +87,20 @@ client.on("message", async message => {
       
       return commandFile.run(client, message, args);
       
+    } catch {
+      
+      try {
+      
+      let commandFile = require(`./commands/musica/${command}.js`);
+      
+      return commandFile.run(client, message, args);
+        
     } catch (err) {
       
       console.log(err);
+      
     }
+  }
   }
   }
 });

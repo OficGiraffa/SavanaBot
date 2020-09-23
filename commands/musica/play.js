@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 
-module.exports.js = async (client, message, args) => {
-  
+module.exports.run = async (client, message, args) => {
+  let voice_channel = message.member.voice.channel;
+  message.reply(`Você está no canal: ${voice_channel}`);
 }
