@@ -10,7 +10,7 @@ module.exports.run = async (client, message, args) => {
     message.channel.bulkDelete(msg_clear);
   } finally {
     let msg = await message.channel.send(`${msg_clear} mensagens apagadas com sucesso`).then(async (msg) => {
-      setTimeout(msg.delete(), 500);
-    });
+      setTimeout(() => {msg.delete()}, 5000);
+    })
   }
 }

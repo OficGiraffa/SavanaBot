@@ -34,6 +34,15 @@ client.on("ready", async message => {
   .setFooter("SavanaBot_Status");
   
   client.guilds.cache.get("738458523775533177").channels.cache.get("758101838116683826").send(embed_status);
+  
+  client.guilds.cache.get("738458523775533177").channels.cache.get("758101838116683826").setTopic(client.guilds.cache.get("738458523775533177").memberCount);
+})
+
+client.on("guildMemberAdd", async member => {
+  client.guilds.cache.get("738458523775533177").channels.cache.get("758101838116683826").setTopic(client.guilds.cache.get("738458523775533177").memberCount);
+})
+client.on("guildMemberRemove", async member => {
+  client.guilds.cache.get("738458523775533177").channels.cache.get("758101838116683826").setTopic(client.guilds.cache.get("738458523775533177").memberCount);
 })
 
 client.on("message", async message => {
