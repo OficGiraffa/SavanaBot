@@ -17,7 +17,8 @@ client.on("ready", async message => {
   let status = [
     "Criador: @Ofic_Giraffa",
     "Prefixo inicial: =",
-    "Digite: =ajuda para ajuda"
+    "Digite: =ajuda para ajuda",
+    "#LutePorSuaLiberdade"
   ];
   setInterval(() => {
     client.user.setActivity(status[Math.floor(Math.random() * status.length)]);
@@ -27,7 +28,8 @@ client.on("ready", async message => {
   
   let embed_status = new Discord.MessageEmbed()
   .setTitle("Status: Ligado ou reiniciado")
-  .setDescription(`Sou o SavanaBot! Estou em ${servers} servers e estou pronto para uso!`)
+  .setDescription(`Sou o SavanaBot! Estou em ${servers} servers e estou pronto para uso!\n` + 
+                  `Neste server tem ${client.guilds.cache.get("738458523775533177").memberCount} membros!`)
   .setColor("GREEN")
   .setFooter("SavanaBot_Status");
   
