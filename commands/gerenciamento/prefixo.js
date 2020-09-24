@@ -13,13 +13,15 @@ module.exports.run = async (client, message, args) => {
     let prefixes = JSON.parse(prefixes_file);
     
     prefixes[message.guild.id] = {
-      prefixes: "!"
+      prefixes: next_prefix
     }
     
     Fs.writeFile("././prefixes.json", JSON.stringify(prefixes), (err) => {
       //if (err) console.log(err);
     })
   
+    message.reply(`Prefixo alterado com sucesso! Agora é: ${prefixes[message.guild.id].prefixes}`);
+    
   } else {
     message.reply("Desculpe! Você não pode ficar mudando meu prefixo sem ter as permissões necessárias >:( ")
   }
