@@ -23,9 +23,9 @@ module.exports.run = async (client, message, args) => {
   
   let embed_play = new Discord.MessageEmbed()
   .setTitle("Estou tocando um áudio!")
-  .setDescription(music_url)
+  .setDescription()
   .setColor("RANDOM")
   .setFooter(`Por ${message.author.username}`);
   
-  message.channel.send(embed_play.getInfo());
+  message.channel.send(embemd_play);
 }
