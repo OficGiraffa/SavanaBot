@@ -11,7 +11,7 @@ module.exports.run = async (client, message, args) => {
     return message.reply("Desculpe! Você precisa estar em um canal de áudio para escutar áudios! :/ ");
   }
   
-  if (message.member.voice.channel !== message.guild.me.voice.channel){
+  if (message.member.voice.channel !== message.guild.me.voice.channel && message.guild.me.voice.channel){
     return message.reply("Desculpe! Já estou sendo usado em outro canal!");
   }
   
@@ -27,5 +27,5 @@ module.exports.run = async (client, message, args) => {
   .setColor("RANDOM")
   .setFooter(`Por ${message.author.username}`);
   
-  message.channel.send(embemd_play);
+  message.channel.send(embed_play);
 }
