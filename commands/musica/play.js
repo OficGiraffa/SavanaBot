@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const Ytdl = require("ytdl-core");
 
 module.exports.run = async (client, message, args) => {
   let voice_channel = message.member.voice.channel;
@@ -7,8 +8,5 @@ module.exports.run = async (client, message, args) => {
   }
   let connection = await voice_channel.join();
   
-  let broadcast = client.voice.createBroadcast();
-  broadcast.play("https://www.youtube.com/watch?v=GNRjFAxpyRI");
-  
-  connection.play(broadcast);
+  let dispatcher = await connection.play(Ytdl("https://www.youtube.com/watch?v=GNRjFAxpyRI"));
 }
