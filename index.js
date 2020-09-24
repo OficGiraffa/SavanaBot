@@ -79,8 +79,14 @@ client.on("message", async message => {
   )
     return;
   
-  let prefixes = Fs.readFile('./prefixes.json');
-  console.log(prefixes);
+  let prefixes_file = Fs.readFileSync('./prefixes.json');
+  let prefixes = JSON.parse(prefixes_file);
+  
+  if (prefixes[message.guild.id]){
+    
+  } else {
+    console.log("A guild será registrada");
+  }
 
   let prefix = config.prefix;
   let args = message.content.trim().split(" ").slice(1);
