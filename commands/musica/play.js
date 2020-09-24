@@ -11,11 +11,21 @@ module.exports.run = async (client, message, args) => {
     return message.reply("Desculpe! Você precisa estar em um canal de áudio para escutar áudios! :/ ");
   }
   
-  if (client.voice.channel){
+  if (message.member.voice.channel !== message.guild.me.voice.channel){
     return message.reply("Desculpe! Já estou sendo usado em outro canal!");
-  } else {
-    let connection = await voice_channel.join();
-  
-    let dispatcher = await connection.play(Ytdl(args[0], { filter: 'audioonly' })); 
   }
+  
+  let connection = await voice_channel.join();
+  
+  let music_url = Ytdl(args[0], { filter: 'audioonly' });
+  
+  let dispatcher = await connection.play(music_url); 
+  
+  let embed_play = new Discord.MessageEmbed()
+  .setTitle("Estou tocando um áudio!")
+  .setDescription(music_url)
+  .setColor("RANDOM")
+  .setFooter(`Por ${message.author.username}`);
+  
+  message.channel.send(embed_play.getInfo());
 }
