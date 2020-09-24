@@ -115,14 +115,8 @@ client.on("message", async message => {
         let commandFile = require(`./commands/gerenciamento/${command}.js`);
 
         return commandFile.run(client, message, args);
-      } catch {
-        try {
-          let commandFile = require(`./commands/musica/${command}.js`);
-
-          return commandFile.run(client, message, args);
-        } catch (err) {
+      } catch (err) {
           console.log(err);
-        }
       }
     }
   }
