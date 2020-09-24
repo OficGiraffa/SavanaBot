@@ -1,43 +1,76 @@
 const Discord = require("discord.js");
-const Ytdl = require("ytdl-core");
-//"@discordjs/opus": "^0.3.2"
-exports.run = async (client, message, args) => {
-  if (!args[0]) {
-    return message.reply(
-      "Desculpe! Como vou saber o que você quer escutar se você não falar?"
-    );
-  }
+const ytdl = require("ytdl-core");
 
-  let voice_channel = message.member.voice.channel;
+const queue = new Map();
 
-  if (!voice_channel) {
-    return message.reply(
-      "Desculpe! Você precisa estar em um canal de áudio para escutar áudios! :/ "
-    );
-  }
-
-  if (
-    message.member.voice.channel !== message.guild.me.voice.channel &&
-    message.guild.me.voice.channel
-  ) {
-    return message.reply("Desculpe! Já estou sendo usado em outro canal!");
-  }
-
-  let connection = await voice_channel.join();
-  
-  let queue = new Map();
-  
-  
-
-  let music_url = Ytdl(args[0], { filter: "audioonly" });
-
-  let dispatcher = await connection.play(music_url);
-
-  let embed_play = new Discord.MessageEmbed()
-    .setTitle("Estou tocando um áudio!")
-    .setDescription(args[0])
-    .setColor("RANDOM")
-    .setFooter(`Por ${message.author.username}`);
-
-  message.channel.send(embed_play);
+module.exports.run = async (client, message, args) => {
+  const serverQueue = queue.get(message.guild.id);
+  execute(message, args , serverQueue)
 };
+async function execute(message, args, serverQueue) {
+  
+  const voiceChannel = message.member.voice.channel;
+  if (!voiceChannel)
+    return message.channel.send(
+      "Desculpe! Como você vai ouvir sem estar num canal de áudio?"
+    );
+  const permissions = voiceChannel.permissionsFor(message.client.user);
+  if (!permissions.has("CONNECT") || !permissions.has("SPEAK")) {
+    return message.channel.send(
+      "I need the permissions to join and speak in your voice channel!"
+    );
+  }
+
+  const songInfo = await ytdl.getInfo(args[1]);
+  const song = {
+    title: songInfo.title,
+    url: songInfo.video_url
+  };
+
+  if (!serverQueue) {
+    const queueContruct = {
+      textChannel: message.channel,
+      voiceChannel: voiceChannel,
+      connection: null,
+      songs: [],
+      volume: 5,
+      playing: true
+    };
+
+    queue.set(message.guild.id, queueContruct);
+
+    queueContruct.songs.push(song);
+
+    try {
+      var connection = await voiceChannel.join();
+      queueContruct.connection = connection;
+      play(message.guild, queueContruct.songs[0]);
+    } catch (err) {
+      console.log(err);
+      queue.delete(message.guild.id);
+      return message.channel.send(err);
+    }
+  } else {
+    serverQueue.songs.push(song);
+    return message.channel.send(`${song.title} has been added to the queue!`);
+  }
+}
+
+function play(guild, song) {
+  const serverQueue = queue.get(guild.id);
+  if (!song) {
+    serverQueue.voiceChannel.leave();
+    queue.delete(guild.id);
+    return;
+  }
+
+  const dispatcher = serverQueue.connection
+    .play(ytdl(song.url))
+    .on("finish", () => {
+      serverQueue.songs.shift();
+      play(guild, serverQueue.songs[0]);
+    })
+    .on("error", error => console.error(error));
+  dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
+  serverQueue.textChannel.send(`Start playing: **${song.title}**`);
+}
