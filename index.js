@@ -102,7 +102,7 @@ client.on("message", async message => {
   try {
     let commandFile = require(`./commands/utilidades/${command}.js`);
 
-    delete require.cache(require.resolve(`./commands/${command}.js`));
+    //delete require.cache(require.resolve(`./commands/${command}.js`));
 
     return commandFile.run(client, message, args);
   } catch {

@@ -1,11 +1,11 @@
 const Discord = require("discord.js");
 
-exports.run = async (client, message, args) => {
+module.exports.run = async (client, message, args) => {
   
   let member;
-  let members = message.guild.members.cache.filter(member => member.presence.status === "online");
+  let members = message.mentions.members;
   
-  console.log(members.a;
+  console.log(members);
   
   let restantes = 0;
   
