@@ -6,5 +6,5 @@ let xp = '';
 let nextLevel = '';
 
 module.exports.run = async (client, message, args, database) => {
-  database.ref(`Servidores/Levels/${message.guild.id}`)
+  database.ref(` Servidores/Levels/${message.guild.id}`)
 }
