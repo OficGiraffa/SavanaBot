@@ -3,11 +3,9 @@ const Discord = require("discord.js");
 exports.run = async (client, message, args) => {
   
   let member;
-  let members = message.guild.members.filter(member => member.presence.status === "online");
+  let members = message.guild.members.cache.filter(member => member.presence.status === "online");
   
-  console.log(member);
-  
-  console.log(member);  
+  console.log(members.a;
   
   let restantes = 0;
   
