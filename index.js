@@ -79,7 +79,8 @@ client.on("message", async message => {
   )
     return;
   
-  let prefixes = require("./prefixes.json");
+  let prefixes = Fs.readFile('./prefixes.json');
+  console.log(prefixes);
 
   let prefix = config.prefix;
   let args = message.content.trim().split(" ").slice(1);
