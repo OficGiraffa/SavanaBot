@@ -1,10 +1,25 @@
-const Discord = require("discord");
+const Discord = require("discord.js");
 
-module.exports.run = async (client, message, args) => {
+exports.run = async (client, message, args) => {
+  
+  let members = []
+  let perso = await message.guild.members.forEach(member => {
+    members.push(member);
+  })
+  
+  
+  
+  
+  
+  
+  let restantes = 0;
+  
+  
+  
   message.channel.send(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
                        " 　　　.　　　 　　.　　　　　。　　 。　.\n" +　
                        ".　　 。　　　　　 ඞ 。 . 　　 • 　　　　•\n" +
-                       `　ﾟ　　 @Gab não era um impostor　 。　. \n` +
-                       ` '　　　 1 Restantes impostores 　 　　。\n` +
+                       `　ﾟ　　 ${perso} não era um impostor　 。　. \n` +
+                       ` '　　　 ${restantes} Restantes impostores 　 　　。\n` +
                         　"　ﾟ　　　.　　　. ,　　　　.　 .")
 }
