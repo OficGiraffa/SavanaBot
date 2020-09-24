@@ -3,14 +3,18 @@ const Discord = require("discord.js");
 exports.run = async (client, message, args) => {
   
   let members = []
-  let perso = await message.guild.members.forEach(member => {
+  let member;
+  message.guild.members.forEach(member => {
     members.push(member);
-  })
+    if (members.lenght > 100){
+      return;
+    }
+  }).then(async () => {
+    let i = Math.floor(Math.random() * members.lenght);
+    member = members[i];
+  });
   
-  
-  
-  
-  
+  console.log(member);  
   
   let restantes = 0;
   
