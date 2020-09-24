@@ -5,14 +5,10 @@ module.exports.run = async (client, message, args) => {
   if (!voice_channel){
     return message.reply("Desculpe! Você precisa estar em um canal de áudio para escutar áudios! :/ ");
   }
-  
-  let music_url = 'https://www.youtube.com/watch?v=h5Z-9nZMOx8';
-  
   let connection = await voice_channel.join();
   
-  await connection.play(music_url);
+  let broadcast = client.voice.createBroadcast();
+  broadcast.play("https://www.youtube.com/watch?v=GNRjFAxpyRI");
   
-  
-  
-  //message.reply(`Você está no canal: ${voice_channel}`);
+  connection.play(broadcast);
 }
