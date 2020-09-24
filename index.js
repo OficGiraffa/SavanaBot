@@ -30,6 +30,8 @@ var firebaseConfig = {
 // Initialize Firebase
 Firebase.initializeApp(firebaseConfig);
 
+const database = Firebase.database();
+
 client.on("ready", async message => {
   let status = [
     "Criador: @Ofic_Giraffa",
@@ -122,7 +124,7 @@ client.on("message", async message => {
       try {
         let commandFile = require(`./commands/gerenciamento/${command}.js`);
 
-        return commandFile.run(client, message, args, Firebase);
+        return commandFile.run(client, message, args, database);
       } catch {
         try {
           let commandFile = require(`./commands/musica/${command}.js`);

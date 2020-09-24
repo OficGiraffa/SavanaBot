@@ -1,6 +1,10 @@
 const Discord = require("discord.js");
-const FireBase = require("firebase");
+//const FireBase = require("firebase");
 
-module.exports.run = async (client, message, args) => {
+let prefix = '';
+let xp = '';
+let nextLevel = '';
 
+module.exports.run = async (client, message, args, database) => {
+  database.ref(`Servidores/Levels/${message.guild.id}`)
 }
