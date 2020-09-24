@@ -59,6 +59,6 @@ function play(guild, song) {
       serverQueue.songs.shift();
       play(guild, serverQueue.songs[0]);
     })
-    .on("error", error => console.error(error));
+  
   serverQueue.textChannel.send(`Tocando agora: **${song.title}**`);
 }
