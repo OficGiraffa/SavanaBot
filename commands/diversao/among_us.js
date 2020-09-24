@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 module.exports.run = async (client, message, args) => {
   
   let member;
-  let members = message.mentions.members;
+  let members = message.mentions.users;
   
   console.log(members);
   
