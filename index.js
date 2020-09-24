@@ -70,21 +70,10 @@ client.on("guildMemberRemove", async member => {
 });
 
 client.on("message", async message => {
-  if (message.author.bot) return;
-  if (message.channel.type === "dm") return;
-  if (!message.content.startsWith(config.prefix)) return;
-  if (
-    message.content.startsWith(`<@!${client.user.id}`) ||
-    message.content.startsWith(`<@${client.user.id}`)
-  )
-    return;
-  
   let prefixes_file = Fs.readFileSync('./prefixes.json', 'utf8');
   let prefixes = JSON.parse(prefixes_file);
   
-  if (prefixes[message.guild.id]){
-    console.log("Está registrado!");
-  } else {
+  if (!prefixes[message.guild.id]){
     prefixes[message.guild.id] = {
       prefixes: config.prefix
     }
@@ -93,8 +82,17 @@ client.on("message", async message => {
       console.log(err);
     })
   }
+  
+  if (message.author.bot) return;
+  if (message.channel.type === "dm") return;
+  if (!message.content.startsWith(prefixes[message.guild.id])) return;
+  if (
+    message.content.startsWith(`<@!${client.user.id}`) ||
+    message.content.startsWith(`<@${client.user.id}`)
+  )
+    return;
 
-  let prefix = config.prefix;
+  let prefix = prefixes[message.guild.id];
   let args = message.content.trim().split(" ").slice(1);
   let command = message.content.split(" ")[0];
   command = command.slice(prefix.length);
