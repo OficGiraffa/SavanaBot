@@ -80,9 +80,7 @@ client.on("message", async message => {
     return;
   
   let prefixes = require("./prefixes.json");
-  
-  if (prefixes.has())
-  
+
   let prefix = config.prefix;
   let args = message.content.trim().split(" ").slice(1);
   let command = message.content.split(" ")[0];
