@@ -77,22 +77,19 @@ client.on("message", async message => {
     prefixes[message.guild.id] = {
       prefixes: config.prefix
     }
-    
-    Fs.writeFile('./prefixes.json', JSON.stringify(prefixes), (err) => {
-      console.log(err);
-    })
   }
   
+  let prefix = prefixes[message.guild.id].prefixes;
+  console.log(prefix);
   if (message.author.bot) return;
   if (message.channel.type === "dm") return;
-  if (!message.content.startsWith(prefixes[message.guild.id])) return;
+  if (!message.content.startsWith(prefix)) return;
   if (
     message.content.startsWith(`<@!${client.user.id}`) ||
     message.content.startsWith(`<@${client.user.id}`)
   )
     return;
 
-  let prefix = prefixes[message.guild.id];
   let args = message.content.trim().split(" ").slice(1);
   let command = message.content.split(" ")[0];
   command = command.slice(prefix.length);
