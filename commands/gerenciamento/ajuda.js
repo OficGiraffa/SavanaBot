@@ -32,8 +32,7 @@ module.exports.run = async (client, message, args) => {
                   "🤗 =abraçar - Abreçe seu amiguinho!\n" +
                   "🤑 =cara_ou_coroa - Bom pra apostas!\n" +
                   "☭  =comida_soviética - Nossa comida.\n" +
-                  "🚬 =fumar - Hm, cancêr!\n" +
-                  "😎 =super_xandão - faça o super xandão falar algo!\n")
+                  "🚬 =fumar - Hm, cancêr!\n")
   .setFooter("Por: " + message.author.username);
   
   let embed_help_3 = new Discord.MessageEmbed()
@@ -55,8 +54,8 @@ module.exports.run = async (client, message, args) => {
   .setDescription("👋Bem-vindo @" + message.author.tag + " a central de comandos de gerenciamento! \n" +
                   "\n" +
                   "💼Comandos:\n" + 
-                  "✋ =ajuda - Ajuda ;)"
-                  )
+                  "✋ =ajuda - Ajuda ;) \n" +
+                  "🤖 =prefixo - Muda o prefixo atual para outro! Coloque na frente o prefixo desejado! \n" )
   .setFooter("Por: " + message.author.username);
 
 
