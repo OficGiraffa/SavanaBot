@@ -8,8 +8,14 @@ module.exports.run = async (client, message, args) => {
     let prefixes_file = Fs.readFileSync('./prefixes.json', 'utf8');
     let prefixes = JSON.parse(prefixes_file);
     
-    pref
+    prefixes[message.guild.id] = {
+      prefixes: next_prefix
+    }
     
+    Fs.writeFile("././prefixes.json", JSON.stringify(prefixes), (err) => {
+      //if (err) console.log(err);
+    })
+  
   } else {
     message.reply("Desculpe! Você não pode ficar mudando meu prefixo sem ter as permissões necessárias >:( ")
   }
