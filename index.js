@@ -87,7 +87,7 @@ client.on("message", async message => {
   }
 
   let prefix = prefixes[message.guild.id].prefixes;
-  let args = message.content.split(" ").slice(1);
+  let args = message.content.trim().split(" ").slice(1);
   let command = message.content.split(" ")[0];
   command = command.slice(prefix.length);
   command = command.toLowerCase();
