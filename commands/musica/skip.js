@@ -1,7 +1,10 @@
 const Discord = require("discord.js");
 
+const queue = new Map();
+
 module.exports.run = async (client, message, args) => {
-  serverQueue = import (serverQueue from 'commands/musica/play.js';
+  
+  const serverQueue = queue.get(message.guild.id);
   
   if (!message.member.voice.channel)
     return message.channel.send(
