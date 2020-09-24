@@ -2,10 +2,9 @@ const Discord = require("discord.js");
 const ytdl = require("ytdl-core");
 
 const queue = new Map();
-export const serverQueue = undefined;
 
 module.exports.run = async (client, message, args) => {
-  serverQueue = queue.get(message.guild.id);
+  const serverQueue = queue.get(message.guild.id);
   execute(message, args , serverQueue)
 };
 async function execute(message, args, serverQueue) {
