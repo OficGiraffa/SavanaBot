@@ -70,18 +70,18 @@ client.on("guildMemberRemove", async member => {
 });
 
 client.on("message", async message => {
-  let prefixes_file = Fs.readFileSync('./prefixes.json', 'utf8');
+  let prefixes_file = Fs.readFileSync("./prefixes.json", "utf8");
   let prefixes = JSON.parse(prefixes_file);
-  
-  if (!prefixes[message.guild.id]){
+
+  if (!prefixes[message.guild.id]) {
     prefixes[message.guild.id] = {
       prefixes: config.prefix
-    }
+    };
   }
-  
+
   let prefix = prefixes[message.guild.id].prefixes;
   //console.log(prefix);
-  
+
   if (message.author.bot) return;
   if (message.channel.type === "dm") return;
   if (!message.content.startsWith(prefix)) return;
@@ -91,7 +91,10 @@ client.on("message", async message => {
   )
     return;
 
-  let args = message.content.trim().split(" ").slice(1);
+  let args = message.content
+    .trim()
+    .split(" ")
+    .slice(1);
   let command = message.content.split(" ")[0];
   command = command.slice(prefix.length);
   command = command.toLowerCase();
@@ -99,7 +102,7 @@ client.on("message", async message => {
   try {
     let commandFile = require(`./commands/utilidades/${command}.js`);
 
-    //delete require.cache(require.resolve(`./commands/${command}.js`));
+    delete require.cache(require.resolve(`./commands/${command}.js`));
 
     return commandFile.run(client, message, args);
   } catch {
@@ -115,7 +118,7 @@ client.on("message", async message => {
       } catch {
         try {
           let commandFile = require(`./commands/musica/${command}.js`);
-          
+
           return commandFile.run(client, message, args);
         } catch (err) {
           console.log(err);

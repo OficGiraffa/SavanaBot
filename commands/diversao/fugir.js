@@ -46,7 +46,7 @@ function kiss(message){
               if (runFrom.id === message.author.id) {
                 return `Não fuja dos seus problemas! Encare-os! <@${message.author.id}> fugiu dele mesmo! :(`
               } else {
-                return `Vou é sair daqui! <@${message.author.id}> fugiu de <@${runFrom}>`;
+                return `Vou é sair daqui! <@${message.author.id}> fugiu de <@${runFrom.id}>`;
               }
             }
             
