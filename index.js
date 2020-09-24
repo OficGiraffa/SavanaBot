@@ -14,23 +14,6 @@ const Discord = require("discord.js"); //Conexão com a livraria Discord.js
 const client = new Discord.Client(); //Criação de um novo Client
 const config = require("./config.json"); //Pegando o prefixo do bot para respostas de comandos
 const Fs = require("fs");
-const Firebase = require("firebase")
-
-// Your web app's Firebase configuration
-var firebaseConfig = {
-  apiKey: "AIzaSyCUHJua8SAS0xjEG0fUYRkvfMR728jH2TA",
-  authDomain: "savanabot.firebaseapp.com",
-  databaseURL: "https://savanabot.firebaseio.com",
-  projectId: "savanabot",
-  storageBucket: "savanabot.appspot.com",
-  messagingSenderId: "205997679332",
-  appId: "1:205997679332:web:82f249a8d0d8f755a2c2f1",
-  measurementId: "G-RPMKM089NR"
-};
-// Initialize Firebase
-Firebase.initializeApp(firebaseConfig);
-
-const database = Firebase.database();
 
 client.on("ready", async message => {
   let status = [
@@ -95,8 +78,12 @@ client.on("message", async message => {
     message.content.startsWith(`<@${client.user.id}`)
   )
     return;
-
-  let prefix = database.re;
+  
+  let prefixes = require("./prefixes.json");
+  
+  if (prefixes.has())
+  
+  let prefix = config.prefix;
   let args = message.content.trim().split(" ").slice(1);
   let command = message.content.split(" ")[0];
   command = command.slice(prefix.length);
@@ -117,7 +104,7 @@ client.on("message", async message => {
       try {
         let commandFile = require(`./commands/gerenciamento/${command}.js`);
 
-        return commandFile.run(client, message, args, database);
+        return commandFile.run(client, message, args);
       } catch {
         try {
           let commandFile = require(`./commands/musica/${command}.js`);

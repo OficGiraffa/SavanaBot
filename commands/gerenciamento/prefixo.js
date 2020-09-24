@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 //const FireBase = require("firebase");
 
-module.exports.run = async (client, message, args, database) => {
+module.exports.run = async (client, message, args) => {
   
 }
