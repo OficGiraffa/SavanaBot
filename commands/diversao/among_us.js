@@ -10,16 +10,13 @@ module.exports.run = async (client, message, args) => {
     users.push(user.id);
   })
   
-  let index_user = Math.floor(Math.random() * users.lenght);
+  let index_user = Math.floor(Math.random() * users.length);
   
-  console.log (index_user);
-  
-  /*
   message.channel.send(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
                        " 　　　.　　　 　　.　　　　　。　　 。　.\n" +　
                        ".　　 。　　　　　 ඞ 。 . 　　 • 　　　　•\n" +
-                       `　ﾟ　　 ${member} não era um impostor　 。　. \n` +
-                       ` '　　　 ${restantes} Restantes impostores 　 　　。\n` +
+                       `　ﾟ　　 <@${users[index_user]}> não era um impostor　 。　. \n` +
+                       ` '　　　 0 Restantes impostores 　 　　。\n` +
                         　"　ﾟ　　　.　　　. ,　　　　.　 .")
-                         */
+                         
 }
