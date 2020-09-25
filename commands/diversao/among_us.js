@@ -2,12 +2,17 @@ const Discord = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
 
-  let members = message.mentions.users;
+  let users_mention = message.mentions.users;
   
-  console.log(members);
+  let users = [];
   
-  let restantes = 0;
+  users_mention.forEach(async user => {
+    users.push(user.id);
+  })
   
+  let index_user = Math.floor(Math.random() * users.lenght);
+  
+  console.log (index_user);
   
   /*
   message.channel.send(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
