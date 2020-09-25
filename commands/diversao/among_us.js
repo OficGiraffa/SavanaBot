@@ -4,7 +4,7 @@ module.exports.run = async (client, message, args) => {
 
   let members = message.mentions.users;
   
-  console.log(members[])
+  console.log(members);
   
   let restantes = 0;
   
