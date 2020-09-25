@@ -12,11 +12,22 @@ module.exports.run = async (client, message, args) => {
   
   let index_user = Math.floor(Math.random() * users.length);
   
-  message.channel.send(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
+  let impostor = Math.floor(Math.random() * 2);
+  
+  if (impostor === 0){
+    message.channel.send(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
                        " 　　　.　　　 　　.　　　　　。　　 。　.\n" +　
                        ".　　 。　　　　　 ඞ 。 . 　　 • 　　　　•\n" +
                        `　ﾟ　　 <@${users[index_user]}> não era um impostor　 。　. \n` +
-                       ` '　　　 0 Restantes impostores 　 　　。\n` +
-                        　"　ﾟ　　　.　　　. ,　　　　.　 .")
+                       ` '　　　 1 impostores restantes! 　 　　。\n` +
+                        　"　ﾟ　　　.　　　. ,　　　　.　 ."); 
+  } else if (impostor === 1){
+    message.channel.send(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
+                       " 　　　.　　　 　　.　　　　　。　　 。　.\n" +　
+                       ".　　 。　　　　　 ඞ 。 . 　　 • 　　　　•\n" +
+                       `　ﾟ　　 <@${users[index_user]}> era um impostor　 。　. \n` +
+                       ` '　　　 0 impostores restantes! 　 　　。\n` +
+                        　"　ﾟ　　　.　　　. ,　　　　.　 ."); 
+  }
                          
 }
