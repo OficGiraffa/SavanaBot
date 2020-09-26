@@ -33,15 +33,15 @@ client.on("ready", async message => {
     .setDescription(
       `Sou o SavanaBot! Estou em ${servers} servers e estou pronto para uso!\n` +
         `Neste server tem ${
-          client.guilds.cache.get("738458523775533177").memberCount
+          client.guilds.cache.get("759215232844562453").memberCount
         } membros!`
     )
     .setColor("GREEN")
     .setFooter("SavanaBot_Status");
 
   client.guilds.cache
-    .get("738458523775533177")
-    .channels.cache.get("758101838116683826")
+    .get("759215232844562453")
+    .channels.cache.get("759226766455078943")
     .send(embed_status);
 
   client.guilds.cache
