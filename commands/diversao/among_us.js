@@ -22,18 +22,27 @@ module.exports.run = async (client, message, args) => {
     let msg = message.channel.send(`<@${users[user_ind]}>`).then((msg) => {
       msg.react("✅");
       
+      let reactions = [];
+      let counts = [];
+      
       const reaction = msg.reactions;
       let user_react = reaction.users;
       const filter = (reaction, user_react) => reaction.emoji.name === "✅" && !user_react.bot;
-      const collector = msg.createReactionCollector(filter, { time: 15000 }).then(() => {
-        console.log("Tempo acabou!");
-      });
+      const collector = msg.createReactionCollector(filter, { time: 3000 })
       
       collector.on("collect", (reaction, user) => {
         message.channel.send(`<@${user.id}> votou em <@${reaction.message.mentions.users.first().id}>`);
       });
+      
+      collector.on("end", (collected) => {
+        reactions.push(collected);
+        reactions.forEach((collected_actual) => {
+          
+        })
+      })
     });
   }
+  
   
   
   //message.channel.send(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
