@@ -29,14 +29,13 @@ module.exports.run = async (client, message, args) => {
       const reaction = msg.reactions;
       let user_react = reaction.users;
       const filter = (reaction, user_react) => reaction.emoji.name === "✅" && !user_react.bot;
-      global.collector = msg.createReactionCollector(filter, { time: 3000 })
+      const collector = msg.createReactionCollector(filter, { time: 3000 })
       
-      global.collector.on("collect", (reaction, user) => {
+      collector.on("collect", (reaction, user) => {
         message.channel.send(`<@${user.id}> votou em <@${reaction.message.mentions.users.first().id}>`);
       });
-    });
-    
-    global.collector.on("end", (collected) => {
+      
+      collector.on("end", (collected) => {
         collected.forEach((collected_msg) => {
           users_voted.push(collected_msg);
         });
@@ -51,11 +50,11 @@ module.exports.run = async (client, message, args) => {
           
           return console.log("Skip");
         })
-        
-        setUserVoted(users_voted[0], message);
+        return setUserVoted(users_voted[0], message);
       })
+    });
   }
-
+  
   //message.channel.send(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
   //                     " 　　　.　　　 　　.　　　　　。　　 。　.\n" +　
   //                     ".　　 。　　　　　 ඞ 。 . 　　 • 　　　　•\n" +
@@ -66,5 +65,5 @@ module.exports.run = async (client, message, args) => {
 
 function setUserVoted(user_voted, message){
   let result_user = user_voted;
-  message.channel.send(`Usuario votado: <@${result_user}>`);
+  message.channel.send(`Usuario votado: ${result_user.message.content}`);
 }
