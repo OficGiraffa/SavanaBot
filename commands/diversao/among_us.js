@@ -9,6 +9,8 @@ module.exports.run = async (client, message, args) => {
   
   let users = [];
   
+  let users_voted = [];
+  
   users_mention.forEach(async user => {
     users.push(user.id);
   })
@@ -22,6 +24,8 @@ module.exports.run = async (client, message, args) => {
     let msg = message.channel.send(`<@${users[user_ind]}>`).then((msg) => {
       msg.react("✅");
       
+      
+      
       const reaction = msg.reactions;
       let user_react = reaction.users;
       const filter = (reaction, user_react) => reaction.emoji.name === "✅" && !user_react.bot;
@@ -32,10 +36,12 @@ module.exports.run = async (client, message, args) => {
       });
       
       collector.on("end", (collected) => {
-        let voted_user = Math.max();
         collected.forEach((collected_msg) => {
-          collected_msg.count;
+          users_voted.push(collected_msg.count);
         });
+        
+        let voted_user = Math.max.apply(null, counts);
+        console.log(voted_user);
       })
     });
   }
