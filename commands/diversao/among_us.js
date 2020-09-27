@@ -9,8 +9,6 @@ module.exports.run = async (client, message, args) => {
     return message.reply("Desculpe! Como você vai jogar sozinho? :( ");
   }
   
-  let user_voted = doSomething(w, w);
-  
   let users = [];
   
   let users_voted = [];
@@ -28,18 +26,17 @@ module.exports.run = async (client, message, args) => {
     let msg = message.channel.send(`<@${users[user_ind]}>`).then((msg) => {
       msg.react("✅");
       
-      
-      
       const reaction = msg.reactions;
       let user_react = reaction.users;
       const filter = (reaction, user_react) => reaction.emoji.name === "✅" && !user_react.bot;
-      const collector = msg.createReactionCollector(filter, { time: 3000 })
+      global.collector = msg.createReactionCollector(filter, { time: 3000 })
       
-      collector.on("collect", (reaction, user) => {
+      global.collector.on("collect", (reaction, user) => {
         message.channel.send(`<@${user.id}> votou em <@${reaction.message.mentions.users.first().id}>`);
       });
-      
-      collector.on("end", (collected) => {
+    });
+    
+    global.collector.on("end", (collected) => {
         collected.forEach((collected_msg) => {
           users_voted.push(collected_msg);
         });
@@ -55,9 +52,8 @@ module.exports.run = async (client, message, args) => {
           return console.log("Skip");
         })
         
-        user_voted = users_voted[0];
+        setUserVoted(users_voted[0], message);
       })
-    });
   }
 
   //message.channel.send(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
@@ -68,10 +64,7 @@ module.exports.run = async (client, message, args) => {
   //                      　"　ﾟ　　　.　　　. ,　　　　.　 .");                        
 }
 
-function userVotedOn (result) {
-  console.log(result);
-}
-
-function userVotedOff (err) {
-  console.log(err);
+function setUserVoted(user_voted, message){
+  let result_user = user_voted;
+  message.channel.send(`Usuario votado: <@${result_user}>`);
 }
