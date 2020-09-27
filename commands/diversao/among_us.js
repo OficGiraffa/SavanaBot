@@ -50,8 +50,8 @@ module.exports.run = async (client, message, args) => {
           
           return console.log("Skip");
         })
-        return setUserVoted(users_voted[0], message);
       })
+      return setUserVoted(users_voted[0], message);
     });
   }
   
