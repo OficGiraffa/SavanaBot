@@ -9,9 +9,7 @@ module.exports.run = async (client, message, args) => {
     return message.reply("Desculpe! Como você vai jogar sozinho? :( ");
   }
   
-  let user_voted = new Promise((resolve, reject) => {
-    
-  })
+  let user_voted = doSomething(w, w);
   
   let users = [];
   
@@ -57,17 +55,23 @@ module.exports.run = async (client, message, args) => {
           return console.log("Skip");
         })
         
-        console.log(users_voted[0]);
+        user_voted = users_voted[0];
       })
     });
   }
-  
-  
-  
+
   //message.channel.send(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
   //                     " 　　　.　　　 　　.　　　　　。　　 。　.\n" +　
   //                     ".　　 。　　　　　 ඞ 。 . 　　 • 　　　　•\n" +
   //                     `　ﾟ　　 <@${users[index_user]}> não era um impostor　 。　. \n` +
   //                     ` '　　　 1 impostores restantes! 　 　　。\n` +
   //                      　"　ﾟ　　　.　　　. ,　　　　.　 .");                        
+}
+
+function userVotedOn (result) {
+  console.log(result);
+}
+
+function userVotedOff (err) {
+  console.log(err);
 }
