@@ -4,30 +4,32 @@ module.exports.run = async (client, message, args) => {
 
   let users_mention = message.mentions.users;
   
+  if (!args[0]){
+    return message.reply("Desculpe! Como vamos jogar sem nenhum jogador? :( ");
+  }
+  
   let users = [];
   
   users_mention.forEach(async user => {
     users.push(user.id);
   })
   
-  let index_user = Math.floor(Math.random() * users.length);
+  let impostor_ind = Math.floor(Math.random * users.length);
+  let impostor = users[impostor_ind];
   
-  let impostor = Math.floor(Math.random() * 2);
+  message.channel.send("ATENÇÃO JOGADORES! Votem na pessoa que vocês acham que é o impostor! Reaja ")
   
-  if (impostor === 0){
-    message.channel.send(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
-                       " 　　　.　　　 　　.　　　　　。　　 。　.\n" +　
-                       ".　　 。　　　　　 ඞ 。 . 　　 • 　　　　•\n" +
-                       `　ﾟ　　 <@${users[index_user]}> não era um impostor　 。　. \n` +
-                       ` '　　　 1 impostores restantes! 　 　　。\n` +
-                        　"　ﾟ　　　.　　　. ,　　　　.　 ."); 
-  } else if (impostor === 1){
-    message.channel.send(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
-                       " 　　　.　　　 　　.　　　　　。　　 。　.\n" +　
-                       ".　　 。　　　　　 ඞ 。 . 　　 • 　　　　•\n" +
-                       `　ﾟ　　 <@${users[index_user]}> era um impostor　 。　. \n` +
-                       ` '　　　 0 impostores restantes! 　 　　。\n` +
-                        　"　ﾟ　　　.　　　. ,　　　　.　 ."); 
+  for (let user_ind = 0; user_ind < users.length; user_ind++){
+    message.channel.send(`<@${users[user_ind]}>`).then((msg) => {
+      msg.react("✅");
+    });
   }
-                         
+  
+  
+  //message.channel.send(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
+  //                     " 　　　.　　　 　　.　　　　　。　　 。　.\n" +　
+  //                     ".　　 。　　　　　 ඞ 。 . 　　 • 　　　　•\n" +
+  //                     `　ﾟ　　 <@${users[index_user]}> não era um impostor　 。　. \n` +
+  //                     ` '　　　 1 impostores restantes! 　 　　。\n` +
+  //                      　"　ﾟ　　　.　　　. ,　　　　.　 .");                        
 }
