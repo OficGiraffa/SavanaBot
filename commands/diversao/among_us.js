@@ -5,6 +5,8 @@ module.exports.run = async (client, message, args) => {
   
   if (!args[0]){
     return message.reply("Desculpe! Como vamos jogar sem nenhum jogador? :( ");
+  } else if (!args[1]){
+    return message.reply("Desculpe! Como você vai jogar sozinho? :( ");
   }
   
   let users = [];
@@ -42,14 +44,16 @@ module.exports.run = async (client, message, args) => {
         
         users_voted.sort((a, b) => {
           if (a.count > b.count){
-            return console.log(a.message);
+            return 1;
           }
           if (a.count < b.count){
-            return console.log(b.message);
+            return -1;
           }
           
           return console.log("Skip");
         })
+        
+        console.log(users_voted[-1]);
         
       })
     });
