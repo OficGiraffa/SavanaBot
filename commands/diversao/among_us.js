@@ -9,6 +9,10 @@ module.exports.run = async (client, message, args) => {
     return message.reply("Desculpe! Como você vai jogar sozinho? :( ");
   }
   
+  let user_voted = new Promise((resolve, reject) => {
+    
+  })
+  
   let users = [];
   
   let users_voted = [];
@@ -52,6 +56,7 @@ module.exports.run = async (client, message, args) => {
           
           return console.log("Skip");
         })
+        
         console.log(users_voted[0]);
       })
     });
