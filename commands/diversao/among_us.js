@@ -16,7 +16,7 @@ module.exports.run = async (client, message, args) => {
   let impostor_ind = Math.floor(Math.random * users.length);
   let impostor = users[impostor_ind];
   
-  message.channel.send("ATENÇÃO JOGADORES! Votem na pessoa que vocês acham que é o impostor! Reaja com ✅")
+  message.channel.send("ATENÇÃO JOGADORES! Votem na pessoa que vocês acham que é o impostor! Reaja com ✅ (Tem 15 segundos!)")
   
   for (let user_ind = 0; user_ind < users.length; user_ind++){
     let msg = message.channel.send(`<@${users[user_ind]}>`).then((msg) => {
@@ -24,15 +24,11 @@ module.exports.run = async (client, message, args) => {
       
       const reaction = msg.reactions;
       let user_react = reaction.users;
-      const filter = (reaction, user_react) => reaction.emoji.name === "✅" && !user_react.bot && msg.reactions.users.has(user_react.id);
-      const collector = msg.createReactionCollector(filter);
-      
-      setTimeout(() => {
-        msg.messageReactionRemoveAll();
-      }, 4000);
+      const filter = (reaction, user_react) => reaction.emoji.name === "✅" && !user_react.bot;
+      const collector = msg.createReactionCollector(filter, { time: 15000 });
       
       collector.on("collect", (reaction, user) => {
-        message.channel.send(`<@${user.id}> votou em <@${reaction.message.mentions.users.first().id}>`)
+        let msg_voted = message.channel.send(`<@${user.id}> votou em <@${reaction.message.mentions.users.first().id}>`)
       });
     });
   }
