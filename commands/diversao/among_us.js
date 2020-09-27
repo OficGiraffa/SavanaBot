@@ -52,9 +52,7 @@ module.exports.run = async (client, message, args) => {
           
           return console.log("Skip");
         })
-        
-        console.log(users_voted[-1]);
-        
+        console.log(users_voted[0]);
       })
     });
   }
