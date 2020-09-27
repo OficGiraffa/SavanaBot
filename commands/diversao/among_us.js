@@ -22,9 +22,6 @@ module.exports.run = async (client, message, args) => {
     let msg = message.channel.send(`<@${users[user_ind]}>`).then((msg) => {
       msg.react("✅");
       
-      let reactions = [];
-      let counts = [];
-      
       const reaction = msg.reactions;
       let user_react = reaction.users;
       const filter = (reaction, user_react) => reaction.emoji.name === "✅" && !user_react.bot;
@@ -35,10 +32,10 @@ module.exports.run = async (client, message, args) => {
       });
       
       collector.on("end", (collected) => {
-        reactions.push(collected);
-        reactions.forEach((collected_actual) => {
-          
-        })
+        let voted_user = Math.max();
+        collected.forEach((collected_msg) => {
+          collected_msg.count;
+        });
       })
     });
   }
