@@ -28,7 +28,7 @@ module.exports.run = async (client, message, args) => {
       const collector = msg.createReactionCollector(filter);
       
       collector.on("collect", (reaction) => {
-        console.log(reaction);
+        message.channel.send(`<@${reaction.users.id}> votou em <@${reaction.message.mentions.first}>`)
       });
     });
   }
