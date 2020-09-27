@@ -20,15 +20,15 @@ module.exports.run = async (client, message, args) => {
   
   for (let user_ind = 0; user_ind < users.length; user_ind++){
     let msg = message.channel.send(`<@${users[user_ind]}>`).then((msg) => {
-      //msg.react("✅");
+      msg.react("✅");
       
       const reaction = msg.reactions;
       let user_react = reaction.users;
-      const filter = (reaction, user_react) => reaction.emoji.name === "✅";
+      const filter = (reaction, user_react) => reaction.emoji.name === "✅" && !user_react.bot;
       const collector = msg.createReactionCollector(filter);
       
-      collector.on("collect", (reaction) => {
-        message.channel.send(`<@${reaction.users.id}> votou em <@${reaction.message.mentions.first}>`)
+      collector.on("collect", (reaction, user) => {
+        message.channel.send(`<@${user.id}> votou em <@${reaction.message.mentions.users.first().id}>`)
       });
     });
   }
