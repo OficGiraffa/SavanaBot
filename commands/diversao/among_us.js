@@ -25,7 +25,9 @@ module.exports.run = async (client, message, args) => {
       const reaction = msg.reactions;
       let user_react = reaction.users;
       const filter = (reaction, user_react) => reaction.emoji.name === "✅" && !user_react.bot;
-      const collector = msg.createReactionCollector(filter, { time: 15000 });
+      const collector = msg.createReactionCollector(filter, { time: 15000 }).then(() => {
+        console.log("Tempo acabou!");
+      });
       
       collector.on("collect", (reaction, user) => {
         message.channel.send(`<@${user.id}> votou em <@${reaction.message.mentions.users.first().id}>`);
