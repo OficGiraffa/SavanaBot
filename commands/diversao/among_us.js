@@ -37,11 +37,20 @@ module.exports.run = async (client, message, args) => {
       
       collector.on("end", (collected) => {
         collected.forEach((collected_msg) => {
-          users_voted.push(collected_msg.count);
+          users_voted.push(collected_msg);
         });
         
-        let voted_user = Math.max.apply(null, counts);
-        console.log(voted_user);
+        users_voted.sort((a, b) => {
+          if (a.count > b.count){
+            return console.log(a.message);
+          }
+          if (a.count < b.count){
+            return console.log(b.message);
+          }
+          
+          return console.log("Skip");
+        })
+        
       })
     });
   }
