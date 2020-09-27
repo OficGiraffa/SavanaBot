@@ -1,7 +1,6 @@
 const Discord = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
-
   let users_mention = message.mentions.users;
   
   if (!args[0]){
@@ -17,14 +16,20 @@ module.exports.run = async (client, message, args) => {
   let impostor_ind = Math.floor(Math.random * users.length);
   let impostor = users[impostor_ind];
   
-  message.channel.send("ATENÇÃO JOGADORES! Votem na pessoa que vocês acham que é o impostor! Reaja ")
+  message.channel.send("ATENÇÃO JOGADORES! Votem na pessoa que vocês acham que é o impostor! Reaja com ✅")
+  
+  let msgs = [];
   
   for (let user_ind = 0; user_ind < users.length; user_ind++){
-    message.channel.send(`<@${users[user_ind]}>`).then((msg) => {
+    let msg = message.channel.send(`<@${users[user_ind]}>`).then((msg) => {
       msg.react("✅");
+      msgs.push(msg);
     });
   }
-  
+
+  msgs.forEach((msg) => {
+    c
+  })
   
   //message.channel.send(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
   //                     " 　　　.　　　 　　.　　　　　。　　 。　.\n" +　
