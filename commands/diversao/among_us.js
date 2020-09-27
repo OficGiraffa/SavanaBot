@@ -24,14 +24,19 @@ module.exports.run = async (client, message, args) => {
       
       const reaction = msg.reactions;
       let user_react = reaction.users;
-      const filter = (reaction, user_react) => reaction.emoji.name === "✅" && !user_react.bot;
+      const filter = (reaction, user_react) => reaction.emoji.name === "✅" && !user_react.bot && msg.reactions.users.has(user_react.id);
       const collector = msg.createReactionCollector(filter);
+      
+      setTimeout(() => {
+        msg.messageReactionRemoveAll();
+      }, 4000);
       
       collector.on("collect", (reaction, user) => {
         message.channel.send(`<@${user.id}> votou em <@${reaction.message.mentions.users.first().id}>`)
       });
     });
   }
+  
   
   //message.channel.send(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
   //                     " 　　　.　　　 　　.　　　　　。　　 。　.\n" +　
