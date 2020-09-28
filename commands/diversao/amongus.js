@@ -32,7 +32,9 @@ module.exports.run = async (client, message, args, prefix) => {
   
   //Envia no canal todas as pessoas mencionadas, faz a reação primaria, e cria o coletor.
   players.forEach((player) => {
-    let msg = message.channel.send(`<@${player.id}>`);
-    msg.react("✅");
+    let msg = message.channel.send(`<@${player.id}>`).then((msg) => {
+      msg.react("✅");
+      
+    });
   })
 }
