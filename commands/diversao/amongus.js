@@ -5,9 +5,7 @@ const Discord = require("discord.js");
   //                     `　ﾟ　　 <@${}> não era um impostor　 。　. \n` +
   //                     ` '　　　 1 impostores restantes! 　 　　。\n` +
   //                      　"　ﾟ　　　.　　　. ,　　　　.　 .");    
-module.exports.run = async (client, message, args) => {
-  //A pessoa digita =amongus (mencione as pessoas que vão participar)
-  //O bot vai falar o tempo que a pessoa tem e que deve votar usando a reação-emoji :white_check_mark: 
+module.exports.run = async (client, message, args, prefix) => {
   //O bot envia no mesmo canal cada pessoa mencionada separadamente.
   //O bot vai reagir cada mensagem com :white_check_mark: (Não vai contar)
   //As pessoas vão poder votar no tempo escolhido
@@ -17,10 +15,21 @@ module.exports.run = async (client, message, args) => {
   //Vai julgar aleatoriamente se essa pessoa é ou não o impostor
   //E falar no final se ela é ou não e enviar a mensagem a cima.
   
+  //Vê se tem no minimo 2 pessoas mencionadas, se não retorna.
   if (!args[0]){
     return message.reply("Desculpe! É impossível jogar um jogo sem ninguém!");
   } else if (!args[1]){
     return message.reply("Desculpe! Como você vai jogar sozinho? :( ");
   }
+  
+  //Pega cada pessoa mencionada e guarda num array.
+  let players = [];
+  args.forEach((player) => {
+    players.push(player);
+  });
+  
+  //Dá inicio no jogo e mostra algumas informações.
+  message.channel.send("ATENÇÃO JOGADORES! Vocês devem votar nos jogadores que colocarei aqui usando :white_check_mark:! (Vocês tem 5s)");
+  
   
 }

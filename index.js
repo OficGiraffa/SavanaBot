@@ -41,7 +41,7 @@ client.on("ready", async message => {
 
   client.guilds.cache
     .get("759215232844562453")
-    .channels.cache.get("759226766455078943")
+    .channels.cache.get("760277403808825355")
     .send(embed_status);
 
   client.guilds.cache
