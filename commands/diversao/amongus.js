@@ -6,8 +6,6 @@ const Discord = require("discord.js");
   //                     ` '　　　 1 impostores restantes! 　 　　。\n` +
   //                      　"　ﾟ　　　.　　　. ,　　　　.　 .");    
 module.exports.run = async (client, message, args, prefix) => {
-  //O bot vai reagir cada mensagem com :white_check_mark: (Não vai contar)
-  //As pessoas vão poder votar no tempo escolhido
   //Vai falar quem votou em quem no chat, no momento do voto da pessoa.
   //Ele vai pegar cada reação de todas as mensagens e vai guardar num array
   //Depois ele vai ordenar as mensagens no array de acordo com os votos :white_check_mark: 
@@ -31,6 +29,7 @@ module.exports.run = async (client, message, args, prefix) => {
   //Dá inicio no jogo e mostra algumas informações.
   message.channel.send("ATENÇÃO JOGADORES! Vocês devem votar nos jogadores que colocarei aqui usando :white_check_mark:! (Vocês tem 5s)");
   
+  let voted_colls = null;
   //Envia no canal todas as pessoas mencionadas, faz a reação primaria, e cria o coletor.
   players.forEach((player) => {
     let msg = message.channel.send(`<@${player.id}>`).then((msg) => {
@@ -40,9 +39,12 @@ module.exports.run = async (client, message, args, prefix) => {
       const filter = (reaction, user) => reaction.emoji.name === "✅";
       const reactionCol = msg.createReactionCollector(filter, { time: 5000 });
       
-      //Quando o coletor acabar ele vai printar tudo que foi coletado.
+      reactionCol.on("collect", (reaction, user) => {
+        message.channel.send(`<@${user.id}> votou em ${reaction.message.mentions.users.first()}`)
+      });
+      //Quando o coletor acabar ele vai enviar tudo que foi coletado para o voted_colls
       reactionCol.on("end", (collected) => {
-        console.log(collected);
+        voted_colls = collected;
       });
     });
   })
