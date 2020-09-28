@@ -8,6 +8,7 @@ const Discord = require("discord.js");
 module.exports.run = async (client, message, args, prefix) => {
   //O bot vai reagir cada mensagem com :white_check_mark: (Não vai contar)
   //As pessoas vão poder votar no tempo escolhido
+  //Vai falar quem votou em quem no chat, no momento do voto da pessoa.
   //Ele vai pegar cada reação de todas as mensagens e vai guardar num array
   //Depois ele vai ordenar as mensagens no array de acordo com os votos :white_check_mark: 
   //Vai pegar a primeira reação-mensagem-menção(Pessoa votada) do array
@@ -35,6 +36,14 @@ module.exports.run = async (client, message, args, prefix) => {
     let msg = message.channel.send(`<@${player.id}>`).then((msg) => {
       msg.react("✅");
       
+      //Cria o coletor que vai pegar todas as reações que ele receber.
+      const filter = (reaction, user) => reaction.emoji.name === "✅";
+      const reactionCol = msg.createReactionCollector(filter, { time: 5000 });
+      
+      //Quando o coletor acabar ele vai printar tudo que foi coletado.
+      reactionCol.on("end", (collected) => {
+        console.log(collected);
+      });
     });
   })
 }
