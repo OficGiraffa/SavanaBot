@@ -6,7 +6,6 @@ const Discord = require("discord.js");
   //                     ` '　　　 1 impostores restantes! 　 　　。\n` +
   //                      　"　ﾟ　　　.　　　. ,　　　　.　 .");    
 module.exports.run = async (client, message, args, prefix) => {
-  //O bot envia no mesmo canal cada pessoa mencionada separadamente.
   //O bot vai reagir cada mensagem com :white_check_mark: (Não vai contar)
   //As pessoas vão poder votar no tempo escolhido
   //Ele vai pegar cada reação de todas as mensagens e vai guardar num array
@@ -24,12 +23,16 @@ module.exports.run = async (client, message, args, prefix) => {
   
   //Pega cada pessoa mencionada e guarda num array.
   let players = [];
-  args.forEach((player) => {
-    players.push(player);
+  message.mentions.users.forEach((user) => {
+    players.push(user);
   });
   
   //Dá inicio no jogo e mostra algumas informações.
   message.channel.send("ATENÇÃO JOGADORES! Vocês devem votar nos jogadores que colocarei aqui usando :white_check_mark:! (Vocês tem 5s)");
   
-  
+  //Envia no canal todas as pessoas mencionadas, faz a reação primaria, e cria o coletor.
+  players.forEach((player) => {
+    let msg = message.channel.send(`<@${player.id}>`);
+    msg.react("✅");
+  })
 }
