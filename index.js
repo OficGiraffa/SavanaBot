@@ -104,17 +104,17 @@ client.on("message", async message => {
 
     //delete require.cache(require.resolve(`./commands/${command}.js`));
 
-    return commandFile.run(client, message, args);
+    return commandFile.run(client, message, args, prefix);
   } catch {
     try {
       let commandFile = require(`./commands/diversao/${command}.js`);
 
-      return commandFile.run(client, message, args);
+      return commandFile.run(client, message, args, prefix);
     } catch {
       try {
         let commandFile = require(`./commands/gerenciamento/${command}.js`);
 
-        return commandFile.run(client, message, args);
+        return commandFile.run(client, message, args, prefix);
       } catch (err) {
           console.log(err);
       }

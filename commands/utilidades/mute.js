@@ -1,13 +1,8 @@
 const Discord = require("discord.js");
 const db = require("quick.db");
 const ms = require("ms");
-const prefixes = require("../../prefixes.json");
  
-module.exports.run = async (client, message, args) =>{
-     let prefix = db.get(`prefix_${message.guild.id}`)
-     if(prefix === null) {
-         prefix = prefixes[message.guild.id].prefixes;
-     }
+module.exports.run = async (client, message, args, prefix) =>{
 	 if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply("Ops Me parece que você não tem permissão");
 	    let embederro = new Discord.MessageEmbed()
             .setTitle(`🔇 Comando de Mute:`)
