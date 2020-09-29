@@ -49,8 +49,8 @@ module.exports.run = async (client, message, args, prefix) => {
   });
 
   setTimeout(() => {
-    console.log(voted_colls);
     voted_colls.sort((a, b) => {
+      console.log(a, b);
       if (a.count < b.count){
         return -1;
       } 
@@ -59,7 +59,6 @@ module.exports.run = async (client, message, args, prefix) => {
       }
       return 0;
     });
-    console.log(voted_colls);
     
     let impostor = voted_colls[0].first().message.mentions.users.first();
     //console.log(impostor);
