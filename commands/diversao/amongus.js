@@ -49,4 +49,10 @@ module.exports.run = async (client, message, args, prefix) => {
       });
     });
   }
+  
+  setTimeout(() => {
+  
+    console.log(voted_colls);
+  
+  }, 5500);
 }
