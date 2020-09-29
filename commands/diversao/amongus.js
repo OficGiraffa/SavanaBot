@@ -35,7 +35,7 @@ module.exports.run = async (client, message, args, prefix) => {
       msg.react("✅");
       
       //Cria o coletor que vai pegar todas as reações que ele receber.
-      const filter = (reaction, user) => reaction.emoji.name === "✅" && user != user;
+      const filter = (reaction, user) => reaction.emoji.name === "✅" && !user === user.bot;
       const reactionCol = msg.createReactionCollector(filter, { time: 5000 });
       
       //Quando alguém reagir ele vai mostrar a pessoa que votou e em quem votou
@@ -61,18 +61,19 @@ module.exports.run = async (client, message, args, prefix) => {
       return a.count - b.count;
     });
     
-    impostor = all_msgR[0].message.mentions.users.first();
+    console.log(all_msgR);
+    //impostor = all_msgR[0].message.mentions.users.first();
     
-    let i = Math.floor(Math.random * 1);
+    let i = Math.floor(Math.random * 2);
     
-    if (i === 0){
+    if (i == 0){
        message.channel.send(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
                          " 　　　.　　　 　　.　　　　　。　　 。　.\n" +　
                          ".　　 。　　　　　 ඞ 。 . 　　 • 　　　　•\n" +
                          `　ﾟ　　 <@${impostor.id}> não era um impostor　 。　. \n` +
                          ` '　　　 1 impostores restantes! 　 　　。\n` +
                               "　ﾟ　　　.　　　. ,　　　　.　 .");    
-    } else if (i === 1){
+    } else if (i == 1){
        message.channel.send(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
                          " 　　　.　　　 　　.　　　　　。　　 。　.\n" +　
                          ".　　 。　　　　　 ඞ 。 . 　　 • 　　　　•\n" +
