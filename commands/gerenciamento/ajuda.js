@@ -29,7 +29,7 @@ module.exports.run = async (client, message, args) => {
                   "👋 =bater - Bate num otário!\n" +
                   "😍 =beijar - Com todo amor!\n" +
                   "🏃 =fugir - Use para correr de alguém! O mencione.\n" +
-                  "🤗 =abraçar - Abreçe seu amiguinho!\n" +
+                  "🤗 =abraçar - Abraçe seu amiguinho!\n" +
                   "🤑 =caraoucoroa - Bom pra apostas!\n" +
                   "☭  =comidasoviética - Nossa comida.\n" +
                   "🚬 =fumar - Hm, cancêr!\n")
@@ -45,9 +45,9 @@ module.exports.run = async (client, message, args) => {
                   "😀 =falar - Fala algo no mesmo canal escrito este comando ou num mencionado\n" +
                   "👻 =apagar - Apaga mensagens no canal digitado. Coloque o número de mensagens a apagar\n" +
                   "🤚 =fecharcanal - Não deixa as pessoas digitarem no canal especificado ou no mesmo digitado\n" +
-                  "👍 =abrircanal - Deixa as pessoas acessarem o canal especificado ou no canal onde o comando foi chamado\n")+
+                  "👍 =abrircanal - Deixa as pessoas digitarem no canal especificado ou no canal onde o comando foi chamado\n")+
                   "🤔 =mute - Muta uma pessoa\n" +
-                  "🤐 =muterole - Muta um cargo inteiro\n"
+                  "🤐 =muterole - O cargo permitido de mutar\n"
   .setFooter("Por: " + message.author.username);
   
    let embed_help_4 = new Discord.MessageEmbed()

@@ -98,7 +98,12 @@ client.on("message", async message => {
   let command = message.content.split(" ")[0];
   command = command.slice(prefix.length);
   command = command.toLowerCase();
-
+  
+  if (message.mentions.users.first() === client.bot){
+    console.log("Vai toma nocu");
+    message.channel.send("FALA CAMBADA IZIZIZI AQUI É XANDÃO PORA");
+  };
+  
   try {
     let commandFile = require(`./commands/utilidades/${command}.js`);
 

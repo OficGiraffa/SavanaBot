@@ -6,7 +6,6 @@ dependencies:
   firebase: 7.21.0
   fs-extra: 9.0.1
   ms: 2.1.2
-  node-opus: 0.3.3
   quick.db: 7.1.2
   request: 2.88.2
   ytdl: 1.3.5
@@ -586,10 +585,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-t/OYhhJ2SD+YGBQcjY8GzzDHEk9f3nerxjtfa6tlMXfe7frs/WozhvCNoGvpM0P3bNf3Gq5ZRMlGr5f3r4/N8A==
-  /bindings/1.2.1:
-    dev: false
-    resolution:
-      integrity: sha1-FK1hE4EtLTfXLme0ystLtyZQXxE=
   /bindings/1.5.0:
     dependencies:
       file-uri-to-path: 1.0.0
@@ -750,10 +745,6 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==
-  /commander/2.20.3:
-    dev: false
-    resolution:
-      integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
   /commander/5.1.0:
     dev: false
     engines:
@@ -1820,10 +1811,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
-  /nan/2.14.1:
-    dev: false
-    resolution:
-      integrity: sha512-isWHgVjnFjh2x2yuJ/tj3JbwoHu3UC2dX5G/88Cm24yB6YopVgxvBObDY7n5xW6ExmFhJpSEQqFPvq9zaXc8Jw==
   /napi-build-utils/1.0.2:
     dev: false
     resolution:
@@ -1880,31 +1867,6 @@ packages:
       node: '>= 0.6.0'
     resolution:
       integrity: sha512-yqkmYrMbK1wPrfz7mgeYvA4tBperLg9FQ4S3Sau3nSAkpOA0x0zC8nQ1siBwozy1f4SE8vq2n1WKv99r+PCa1Q==
-  /node-opus/0.3.3:
-    cpu:
-      - x64
-      - arm
-      - arm64
-      - ia32
-    dependencies:
-      bindings: 1.2.1
-      commander: 2.20.3
-      nan: 2.14.1
-    deprecated: This project is unmaintained. See @discordjs/opus for an alternative.
-    dev: false
-    engines:
-      node: '>=5.10.0'
-    optionalDependencies:
-      ogg-packet: 1.0.1
-    os:
-      - linux
-      - darwin
-      - win32
-      - freebsd
-      - android
-    requiresBuild: true
-    resolution:
-      integrity: sha512-ZQniA8iJ6y/qOTmW6eyzM9m8odt4CIGV0NM9/U03/pYLhGyxy18QXO25WfrWd8XsUYx57tnxll2xxj54CN08uQ==
   /noop-logger/0.1.1:
     dev: false
     resolution:
@@ -1966,13 +1928,6 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
-  /ogg-packet/1.0.1:
-    dependencies:
-      ref-struct: 1.1.0
-    dev: false
-    optional: true
-    resolution:
-      integrity: sha512-dW1ok3BMnMikyXGDIgVEckWnlViW8JLWQV4qj9aN/rNRVqHlDYSlcIEtSIMH7tpuUOiIxAhY3+OxNdIOm6s17A==
   /on-finished/2.3.0:
     dependencies:
       ee-first: 1.1.1
@@ -2208,24 +2163,6 @@ packages:
       node: '>= 6'
     resolution:
       integrity: sha512-BViHy7LKeTz4oNnkcLJ+lVSL6vpiFeX6/d3oSH8zCW7UxP2onchk+vTGB143xuFjHS3deTgkKoXXymXqymiIdA==
-  /ref-struct/1.1.0:
-    dependencies:
-      debug: 2.6.9
-      ref: 1.3.5
-    dev: false
-    optional: true
-    resolution:
-      integrity: sha1-XV7mWtQc78Olxf60BYcmHkee3BM=
-  /ref/1.3.5:
-    dependencies:
-      bindings: 1.5.0
-      debug: 2.6.9
-      nan: 2.14.1
-    dev: false
-    optional: true
-    requiresBuild: true
-    resolution:
-      integrity: sha512-2cBCniTtxcGUjDpvFfVpw323a83/0RLSGJJY5l5lcomZWhYpU2cuLdsvYqMixvsdLJ9+sTdzEkju8J8ZHDM2nA==
   /request/2.88.2:
     dependencies:
       aws-sign2: 0.7.0
@@ -2771,7 +2708,6 @@ specifiers:
   firebase: ^7.21.0
   fs-extra: ^9.0.1
   ms: ^2.1.2
-  node-opus: ^0.3.3
   quick.db: ^7.1.2
   request: ^2.88.2
   ytdl: ^1.3.5
