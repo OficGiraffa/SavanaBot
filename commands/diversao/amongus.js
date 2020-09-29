@@ -54,11 +54,10 @@ module.exports.run = async (client, message, args, prefix) => {
       return a.count - b.count;
     });
     
-    let impostor = voted_colls[0]//.message.mentions.users.first();
-    console.log(voted_colls[0]);
+    let impostor = voted_colls[0].reaction;//message.mentions.users.first();
+    console.log(impostor);
     
-    let i = Math.floor(Math.random * 2);
-    
+    let i = Math.floor(Math.random * 1);
     /*
     if (i === 0){
        message.channel.send(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
@@ -75,7 +74,7 @@ module.exports.run = async (client, message, args, prefix) => {
                          ` '　　　 0 impostores restantes! 　 　　。\n` +
                               "　ﾟ　　　.　　　. ,　　　　.　 .");    
     };
+
     */
-    
   }, 5500)
 }
