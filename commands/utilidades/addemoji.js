@@ -1,10 +1,6 @@
 const Discord = require("discord.js");
 
-module.exports.run = async (message, client, args) => {
-  //Guarda numa variavel
-  //Entra na guild da message
-  //Adiciona o emoji com GUILD.emojis.create(var do emoji)
-  
+module.exports.run = async (client, message, args) => {
   if (!message.member.permissions.has("MANAGE_EMOJIS")){
     return message.reply("Desculpe, você não tem permissão pra mexer nos emojis! >:c");
   };
@@ -18,8 +14,8 @@ module.exports.run = async (message, client, args) => {
   try {
   message.guild.emojis.create(emoji_to_add);
   
-  message.reply("Yee! Emoji adicionado com sucesso!");
-  
-  }
-  
+  message.reply("Yee! Emoji "+ emoji_to_add +" adicionado com sucesso!");
+  } catch(err) {
+    console.log(err);
+  } 
 }
