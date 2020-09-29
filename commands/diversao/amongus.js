@@ -42,6 +42,7 @@ module.exports.run = async (client, message, args, prefix) => {
       //Quando o coletor acabar ele vai enviar tudo que foi coletado para o voted_colls
       reactionCol.on("end", (collected) => {
         voted_colls.push(collected);
+        console.log(collected.first());
       });
     });
   });
@@ -54,8 +55,8 @@ module.exports.run = async (client, message, args, prefix) => {
       return a.count - b.count;
     });
     
-    let impostor = voted_colls[0].reaction;//message.mentions.users.first();
-    console.log(impostor);
+    //let impostor = voted_colls[0];//message.mentions.users.first();
+    //console.log(impostor);
     
     let i = Math.floor(Math.random * 1);
     /*
