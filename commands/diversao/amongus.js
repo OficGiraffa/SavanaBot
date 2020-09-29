@@ -49,14 +49,4 @@ module.exports.run = async (client, message, args, prefix) => {
       });
     });
   }
-  setTimeout(() => {
-    return select_voted(voted_colls, message);
-  }, 5010);
-}
-
-function select_voted(voted_colls, message){
-  let players_voted = [];
-  voted_colls.forEach((r) => {
-    players_voted.push(r);
-  });
 }
