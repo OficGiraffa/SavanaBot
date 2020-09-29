@@ -31,8 +31,8 @@ module.exports.run = async (client, message, args, prefix) => {
   
   let voted_colls = null;
   //Envia no canal todas as pessoas mencionadas, faz a reação primaria, e cria o coletor.
-  players.forEach((player) => {
-    let msg = message.channel.send(`<@${player.id}>`).then((msg) => {
+  for (let player = 0; player < players.length; player++){
+    let msg = message.channel.send(`${players[player]}`).then((msg) => {
       msg.react("✅");
       
       //Cria o coletor que vai pegar todas as reações que ele receber.
@@ -48,5 +48,10 @@ module.exports.run = async (client, message, args, prefix) => {
         voted_colls = collected;
       });
     });
-  });
+    if (!voted_colls === )
+  }
+}
+
+function get_voted_people(voted_colls){
+  console.log(voted_colls);
 }
