@@ -6,9 +6,6 @@ const Discord = require("discord.js");
   //                     ` '　　　 1 impostores restantes! 　 　　。\n` +
   //                      　"　ﾟ　　　.　　　. ,　　　　.　 .");    
 module.exports.run = async (client, message, args, prefix) => {
-  //Ele vai pegar cada reação de todas as mensagens e vai guardar num array
-  //Depois ele vai ordenar as mensagens no array de acordo com os votos :white_check_mark: 
-  //Vai pegar a primeira reação-mensagem-menção(Pessoa votada) do array
   //Vai julgar aleatoriamente se essa pessoa é ou não o impostor
   //E falar no final se ela é ou não e enviar a mensagem a cima.
   
@@ -18,6 +15,9 @@ module.exports.run = async (client, message, args, prefix) => {
   } else if (!args[1]){
     return message.reply("Desculpe! Como você vai jogar sozinho? :( ");
   }
+  
+  //Variavel que armazena o impostor
+  let impostor = null;
   
   //Pega cada pessoa mencionada e guarda num array.
   let players = [];
@@ -35,7 +35,7 @@ module.exports.run = async (client, message, args, prefix) => {
       msg.react("✅");
       
       //Cria o coletor que vai pegar todas as reações que ele receber.
-      const filter = (reaction, user) => reaction.emoji.name === "✅";
+      const filter = (reaction, user) => reaction.emoji.name === "✅" && user != user;
       const reactionCol = msg.createReactionCollector(filter, { time: 5000 });
       
       //Quando alguém reagir ele vai mostrar a pessoa que votou e em quem votou
@@ -55,7 +55,31 @@ module.exports.run = async (client, message, args, prefix) => {
     message.channel.send("ATENÇÃO! Tempo de votar acabou!");
     voted_colls.forEach((msgReaction) => {
       all_msgR.push(msgReaction);
-    })
+    });
+    
+    all_msgR.sort((a, b) => {
+      return a.count - b.count;
+    });
+    
+    impostor = all_msgR[0].message.mentions.users.first();
+    
+    let i = Math.floor(Math.random * 1);
+    
+    if (i === 0){
+       message.channel.send(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
+                         " 　　　.　　　 　　.　　　　　。　　 。　.\n" +　
+                         ".　　 。　　　　　 ඞ 。 . 　　 • 　　　　•\n" +
+                         `　ﾟ　　 <@${impostor.id}> não era um impostor　 。　. \n` +
+                         ` '　　　 1 impostores restantes! 　 　　。\n` +
+                              "　ﾟ　　　.　　　. ,　　　　.　 .");    
+    } else if (i === 1){
+       message.channel.send(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
+                         " 　　　.　　　 　　.　　　　　。　　 。　.\n" +　
+                         ".　　 。　　　　　 ඞ 。 . 　　 • 　　　　•\n" +
+                         `　ﾟ　　 <@${impostor.id}> era um impostor　 。　. \n` +
+                         ` '　　　 0 impostores restantes! 　 　　。\n` +
+                              "　ﾟ　　　.　　　. ,　　　　.　 .");    
+    };
   
   }, 5500);
 }
