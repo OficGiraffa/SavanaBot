@@ -32,12 +32,14 @@ module.exports.run = async (client, message, args, prefix) => {
       msg.react("✅");
       
       //Cria o coletor que vai pegar todas as reações que ele receber.
-      const filter = (reaction, user) => reaction.emoji.name === "✅" && !user === user.bot;
+      const filter = (reaction, user) => reaction.emoji.name === "✅"; //&& !user === user.bot;
       const reactionCol = msg.createReactionCollector(filter, { time: 10000 });
       
       //Quando alguém reagir ele vai mostrar a pessoa que votou e em quem votou
       reactionCol.on("collect", (reaction, user) => {
-        message.channel.send(`<@${user.id}> votou em ${reaction.message.mentions.users.first()}`)
+        if (!user === user.bot){
+          message.channel.send(`<@${user.id}> votou em ${reaction.message.mentions.users.first()}`)
+        }
       });
       //Quando o coletor acabar ele vai enviar tudo que foi coletado para o voted_colls
       reactionCol.on("end", (collected) => {
@@ -49,7 +51,13 @@ module.exports.run = async (client, message, args, prefix) => {
   setTimeout(() => {
     console.log(voted_colls);
     voted_colls.sort((a, b) => {
-      return a.count - b.count;
+      if (a.count < b.count){
+        return -1;
+      } 
+      if (a.count > b.count){
+        return 1;
+      }
+      return 0;
     });
     console.log(voted_colls);
     
@@ -75,6 +83,8 @@ module.exports.run = async (client, message, args, prefix) => {
                               "　ﾟ　　　.　　　. ,　　　　.　 .")
       .setColor("RED")
       .setFooter("Jogo iniciado por: " + message.author.username);
+      
+      message.channel.send(msg_embed);
     } else if (i == 1){
       let msg_embed = new Discord.MessageEmbed()
       .setTitle("ATENÇÃO! Fim de jogo! Conseguiram!")
@@ -86,6 +96,8 @@ module.exports.run = async (client, message, args, prefix) => {
                               "　ﾟ　　　.　　　. ,　　　　.　 .")
       .setColor("RED")
       .setFooter("Jogo iniciado por: " + message.author.username);
+      
+      message.channel.send(msg_embed);
     };
   
   }, 10550);
