@@ -6,7 +6,6 @@ const Discord = require("discord.js");
   //                     ` '　　　 1 impostores restantes! 　 　　。\n` +
   //                      　"　ﾟ　　　.　　　. ,　　　　.　 .");    
 module.exports.run = async (client, message, args, prefix) => {
-  //Vai falar quem votou em quem no chat, no momento do voto da pessoa.
   //Ele vai pegar cada reação de todas as mensagens e vai guardar num array
   //Depois ele vai ordenar as mensagens no array de acordo com os votos :white_check_mark: 
   //Vai pegar a primeira reação-mensagem-menção(Pessoa votada) do array
@@ -31,8 +30,8 @@ module.exports.run = async (client, message, args, prefix) => {
   
   let voted_colls = null;
   //Envia no canal todas as pessoas mencionadas, faz a reação primaria, e cria o coletor.
-  for (let player = 0; player < players.length; player++){
-    let msg = message.channel.send(`${players[player]}`).then((msg) => {
+  players.forEach((player) => {
+    let msg = message.channel.send(`${player}`).then((msg) => {
       msg.react("✅");
       
       //Cria o coletor que vai pegar todas as reações que ele receber.
@@ -48,11 +47,15 @@ module.exports.run = async (client, message, args, prefix) => {
         voted_colls = collected;
       });
     });
-  }
+  });
   
+  let all_msgR = [];
   setTimeout(() => {
   
-    console.log(voted_colls);
+    message.channel.send("ATENÇÃO! Tempo de votar acabou!");
+    voted_colls.forEach((msgReaction) => {
+      all_msgR.push(msgReaction);
+    })
   
   }, 5500);
 }
