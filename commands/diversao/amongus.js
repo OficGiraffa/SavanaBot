@@ -49,16 +49,17 @@ module.exports.run = async (client, message, args, prefix) => {
   });
 
   setTimeout(() => {
-    voted_colls.sort((a, b) => {
-      console.log(a, b);
-      if (a.count < b.count){
-        return -1;
-      } 
-      if (a.count > b.count){
+    voted_colls = voted_colls.sort((a, b) => {
+      if (a.first().count > b.first().count){
         return 1;
+      } 
+      if (a.first().count < b.first().count){
+        return -1;
       }
       return 0;
     });
+    
+    console.log(voted_colls);
     
     let impostor = voted_colls[0].first().message.mentions.users.first();
     //console.log(impostor);
