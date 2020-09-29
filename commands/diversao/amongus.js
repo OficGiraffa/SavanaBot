@@ -23,7 +23,7 @@ module.exports.run = async (client, message, args, prefix) => {
   });
   
   //Dá inicio no jogo e mostra algumas informações.
-  message.channel.send("ATENÇÃO JOGADORES! Vocês devem votar nos jogadores que colocarei aqui usando :white_check_mark:! (Vocês tem 5s)");
+  message.channel.send("ATENÇÃO JOGADORES! Vocês devem votar nos jogadores que colocarei aqui usando :white_check_mark:! (Vocês tem 10s)");
   
   let voted_colls = [];
   //Envia no canal todas as pessoas mencionadas, faz a reação primaria, e cria o coletor.
@@ -33,7 +33,7 @@ module.exports.run = async (client, message, args, prefix) => {
       
       //Cria o coletor que vai pegar todas as reações que ele receber.
       const filter = (reaction, user) => reaction.emoji.name === "✅" && !user === user.bot;
-      const reactionCol = msg.createReactionCollector(filter, { time: 5000 });
+      const reactionCol = msg.createReactionCollector(filter, { time: 10000 });
       
       //Quando alguém reagir ele vai mostrar a pessoa que votou e em quem votou
       reactionCol.on("collect", (reaction, user) => {
@@ -42,7 +42,6 @@ module.exports.run = async (client, message, args, prefix) => {
       //Quando o coletor acabar ele vai enviar tudo que foi coletado para o voted_colls
       reactionCol.on("end", (collected) => {
         voted_colls.push(collected);
-        console.log(collected.first());
       });
     });
   });
@@ -55,19 +54,19 @@ module.exports.run = async (client, message, args, prefix) => {
       return a.count - b.count;
     });
     
-    //let impostor = voted_colls[0];//message.mentions.users.first();
-    //console.log(impostor);
+    let impostor = voted_colls[0].first().message.mentions.users.first();
+    console.log(impostor);
     
-    let i = Math.floor(Math.random * 1);
-    /*
-    if (i === 0){
+    let i = Math.floor(Math.random() * 1);
+
+    if (i == 0){
        message.channel.send(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
                          " 　　　.　　　 　　.　　　　　。　　 。　.\n" +　
                          ".　　 。　　　　　 ඞ 。 . 　　 • 　　　　•\n" +
                          `　ﾟ　　 <@${impostor.id}> não era um impostor　 。　. \n` +
                          ` '　　　 1 impostores restantes! 　 　　。\n` +
                               "　ﾟ　　　.　　　. ,　　　　.　 .");    
-    } else if (i === 1){
+    } else if (i == 1){
        message.channel.send(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
                          " 　　　.　　　 　　.　　　　　。　　 。　.\n" +　
                          ".　　 。　　　　　 ඞ 。 . 　　 • 　　　　•\n" +
@@ -75,7 +74,6 @@ module.exports.run = async (client, message, args, prefix) => {
                          ` '　　　 0 impostores restantes! 　 　　。\n` +
                               "　ﾟ　　　.　　　. ,　　　　.　 .");    
     };
-
-    */
-  }, 5500)
+  
+  }, 10500);
 }
