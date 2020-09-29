@@ -47,33 +47,46 @@ module.exports.run = async (client, message, args, prefix) => {
   });
 
   setTimeout(() => {
-
-    message.channel.send("ATENÇÃO! Tempo de votar acabou!");
-    
+    console.log(voted_colls);
     voted_colls.sort((a, b) => {
       return a.count - b.count;
     });
+    console.log(voted_colls);
     
     let impostor = voted_colls[0].first().message.mentions.users.first();
-    console.log(impostor);
+    //console.log(impostor);
     
     let i = Math.floor(Math.random() * 1);
 
     if (i == 0){
-       message.channel.send(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
+       /*message.channel.send(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
                          " 　　　.　　　 　　.　　　　　。　　 。　.\n" +　
                          ".　　 。　　　　　 ඞ 。 . 　　 • 　　　　•\n" +
                          `　ﾟ　　 <@${impostor.id}> não era um impostor　 。　. \n` +
-                         ` '　　　 1 impostores restantes! 　 　　。\n` +
-                              "　ﾟ　　　.　　　. ,　　　　.　 .");    
+                         ` '　　　 Você perderam!     　 　　。\n` +
+                              "　ﾟ　　　.　　　. ,　　　　.　 .");    */
+      let msg_embed = new Discord.MessageEmbed()
+      .setTitle("ATENÇÃO! Fim de jogo! Perderam!")
+      .setDescription(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
+                         " 　　　.　　　 　　.　　　　　。　　 。　.\n" +　
+                         ".　　 。　　　　　 ඞ 。 . 　　 • 　　　　•\n" +
+                         `　ﾟ　　 <@${impostor.id}> não era um impostor　 。　. \n` +
+                         ` '　　　 Vocês perderam!     　 　　。\n` +
+                              "　ﾟ　　　.　　　. ,　　　　.　 .")
+      .setColor("RED")
+      .setFooter("Jogo iniciado por: " + message.author.username);
     } else if (i == 1){
-       message.channel.send(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
+      let msg_embed = new Discord.MessageEmbed()
+      .setTitle("ATENÇÃO! Fim de jogo! Conseguiram!")
+      .setDescription(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
                          " 　　　.　　　 　　.　　　　　。　　 。　.\n" +　
                          ".　　 。　　　　　 ඞ 。 . 　　 • 　　　　•\n" +
                          `　ﾟ　　 <@${impostor.id}> era um impostor　 。　. \n` +
-                         ` '　　　 0 impostores restantes! 　 　　。\n` +
-                              "　ﾟ　　　.　　　. ,　　　　.　 .");    
+                         ` '　　　 Vocês ganharam!     　 　　。\n` +
+                              "　ﾟ　　　.　　　. ,　　　　.　 .")
+      .setColor("RED")
+      .setFooter("Jogo iniciado por: " + message.author.username);
     };
   
-  }, 10500);
+  }, 10550);
 }
