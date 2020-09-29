@@ -48,10 +48,15 @@ module.exports.run = async (client, message, args, prefix) => {
         voted_colls = collected;
       });
     });
-    if (!voted_colls === )
   }
+  setTimeout(() => {
+    return select_voted(voted_colls, message);
+  }, 5010);
 }
 
-function get_voted_people(voted_colls){
-  console.log(voted_colls);
+function select_voted(voted_colls, message){
+  let players_voted = [];
+  voted_colls.forEach((r) => {
+    players_voted.push(r);
+  });
 }
