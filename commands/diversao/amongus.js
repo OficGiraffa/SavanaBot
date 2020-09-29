@@ -39,6 +39,7 @@ module.exports.run = async (client, message, args, prefix) => {
       const filter = (reaction, user) => reaction.emoji.name === "✅";
       const reactionCol = msg.createReactionCollector(filter, { time: 5000 });
       
+      //Quando alguém reagir ele vai mostrar a pessoa que votou e em quem votou
       reactionCol.on("collect", (reaction, user) => {
         message.channel.send(`<@${user.id}> votou em ${reaction.message.mentions.users.first()}`)
       });
@@ -47,5 +48,5 @@ module.exports.run = async (client, message, args, prefix) => {
         voted_colls = collected;
       });
     });
-  })
+  });
 }
