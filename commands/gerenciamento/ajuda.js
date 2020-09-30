@@ -38,7 +38,8 @@ module.exports.run = async (client, message, args) => {
         "🤗 =abraçar - Abraçe seu amiguinho!\n" +
         "🤑 =caraoucoroa - Bom pra apostas!\n" +
         "☭  =comidasoviética - Nossa comida.\n" +
-        "🚬 =fumar - Hm, cancêr!\n"
+        "🚬 =fumar - Hm, cancêr!\n" +
+        "🗳️ =amongus - Hora de votar e tirar o impostor da nave!\n"
     )
     .setFooter("Por: " + message.author.username);
 
