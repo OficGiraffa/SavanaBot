@@ -59,7 +59,7 @@ module.exports.run = async (client, message, args, prefix) => {
       return 0;
     });
     
-    console.log(voted_colls);
+    console.log(voted_colls[0].first());
     
     let impostor = voted_colls[0].first().message.mentions.users.first();
     //console.log(impostor);
@@ -94,7 +94,7 @@ module.exports.run = async (client, message, args, prefix) => {
                          `　ﾟ　　 <@${impostor.id}> era um impostor　 。　. \n` +
                          ` '　　　 Vocês ganharam!     　 　　。\n` +
                               "　ﾟ　　　.　　　. ,　　　　.　 .")
-      .setColor("RED")
+      .setColor("GREEN")
       .setFooter("Jogo iniciado por: " + message.author.username);
       
       message.channel.send(msg_embed);
