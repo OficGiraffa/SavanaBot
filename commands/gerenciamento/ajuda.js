@@ -8,7 +8,7 @@ module.exports.run = async (client, message, args) => {
       `👋Bem vindo <@${message.author.id}> a central de ajuda e comandos do SavanaBot!\n` +
         "👉Sobre mim: \n" +
         "Sou um bot de discord feito por @Ofic_Giraffa (Com a ajuda de Patin) apenas para estudos.\n" +
-        "\n" +
+        "Digite =infos para mais informações!\n" +
         "💼Comandos:\n" +
         "🎭 - Diversão\n" +
         "🎲 - Utilidades\n" +
