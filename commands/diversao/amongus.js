@@ -23,7 +23,7 @@ module.exports.run = async (client, message, args, prefix) => {
   });
   
   //Dá inicio no jogo e mostra algumas informações.
-  message.channel.send("ATENÇÃO JOGADORES! Vocês devem votar nos jogadores que colocarei aqui usando :white_check_mark:! (Vocês tem 10s)");
+  message.channel.send("ATENÇÃO JOGADORES! Vocês devem votar nos jogadores que colocarei aqui usando :white_check_mark:! Tentem achar o único impostor!(Vocês tem 10s)");
   
   let voted_colls = [];
   //Envia no canal todas as pessoas mencionadas, faz a reação primaria, e cria o coletor.
@@ -56,10 +56,10 @@ module.exports.run = async (client, message, args, prefix) => {
       if (a.first().count > b.first().count){
         return -1;
       }
-      return 0;
+      return message.channel.send("Empate! Ninguém foi ejetado! Isso é perder! >: ( ");
     });
     
-    let i = Math.floor(Math.random() * 1);
+    let i = Math.floor(Math.random() * 2);
   
     
     if (i == 0){
