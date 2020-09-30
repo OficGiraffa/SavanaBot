@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args) => {
     .setColor("RANDOM")
     .setDescription(
       `👋Bem vindo <@${message.author.id}>, aqui você pode ver algumas informações sobre mim S2\n` +
-        "👉Sobre mim: \n" +
+        "<a:coffe:759100062252007475> Sobre mim: \n" +
         "Sou um bot de discord feito por @Ofic_Giraffa e @patin apenas para estudos.\n\n" +
         "Então ele é bem simples e possui alguns problemas (vários)\n" +
         "Caso você encontre algum problema, contate-me em: \n" +
