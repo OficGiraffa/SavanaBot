@@ -2,13 +2,10 @@ const Discord = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
   
-  let on = false;
+  let on = true;
   
   let intv = setInterval(() => {
-    on = true;
-    message.channel.send("k-code " + Math.floor(Math.random() * (999 - 100))).then((msg) => {
-      msg.delete();
-    });
+    message.channel.send("k-code " + Math.floor(Math.random() * (999 - 100)));
   }, 3000);
   
   setTimeout(() => {
