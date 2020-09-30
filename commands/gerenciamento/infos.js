@@ -16,7 +16,7 @@ module.exports.run = async (client, message, args) => {
         "👉Eu fui feito em ``JS``!\n" +
         "👉O @ofic_giraffa e o @patin não são furrys!\n" +
         "👉Beba água :) S2\n\n" +
-        "👉Futura atualização: por enquanto nada : o \n\n" +
+        "👉Futura atualização: SISTEMA DE ECONOMIA! \n\n" +
         `+++Me adicione: https://discord.com/api/oauth2/authorize?client_id=756590483165151302&permissions=8&scope=bot +++`
     )
     .setFooter("Por: " + message.author.username);

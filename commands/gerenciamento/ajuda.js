@@ -21,13 +21,14 @@ module.exports.run = async (client, message, args) => {
   messageEmbed.react("🎭");
   messageEmbed.react("🎲");
   messageEmbed.react("🚦");
+  messageEmbed.react("💸");
 
   let embed_help_2 = new Discord.MessageEmbed()
     .setTitle("Ajuda do bot!")
-    .setColor("RANDOM")
+    .setColor("RED")
     .setDescription(
-      "👋Bem-vindo @" +
-        message.author.tag +
+      "👋Bem-vindo " +
+        `<@${message.author.id}>` +
         " a central de comandos de diversão!\n" +
         "\n" +
         "💼Comandos:\n" +
@@ -43,10 +44,10 @@ module.exports.run = async (client, message, args) => {
 
   let embed_help_3 = new Discord.MessageEmbed()
     .setTitle("Ajuda do bot!")
-    .setColor("RANDOM")
+    .setColor("PINK")
     .setDescription(
-      "👋Bem-vindo @" +
-        message.author.tag +
+      "👋Bem-vindo " +
+        `<@${message.author.id}>` +
         " a central de comandos utilidades!\n" +
         "\n" +
         "💼Comandos:\n" +
@@ -62,17 +63,29 @@ module.exports.run = async (client, message, args) => {
 
   let embed_help_4 = new Discord.MessageEmbed()
     .setTitle("Ajuda do bot!")
-    .setColor("RANDOM")
+    .setColor("WHITE")
     .setDescription(
-      "👋Bem-vindo @" +
-        message.author.tag +
+      "👋Bem-vindo " +
+        `<@${message.author.id}>` +
         " a central de comandos de gerenciamento! \n" +
         "\n" +
         "💼Comandos:\n" +
         "✋ =ajuda - Ajuda ;) \n" +
         "✋ =infos - Mais informações sobre o Bot \n" +
-        "🤖 =prefixo - Muda o prefixo atual para outro! Coloque na frente o prefixo desejado! \n" +
-        "✋ =h - Digite =h mais o nome de algum comando para ver informações sobre ele\n" 
+        "🤖 =prefixo - Muda o prefixo atual para outro! Coloque na frente o prefixo desejado! \n" 
+        //"✋ =h - Digite =h mais o nome de algum comando para ver informações sobre ele\n" 
+    )
+    .setFooter("Por: " + message.author.username);
+  
+  let embed_help_5 = new Discord.MessageEmbed()
+    .setTitle("Ajuda do bot!")
+    .setColor("GREEN")
+    .setDescription(
+      "👋Bem-vindo " +
+        `<@${message.author.id}>` +
+        " a central de comandos de economia \n" +
+        "\n" +
+        "Em desenvolvimento S2\n" 
     )
     .setFooter("Por: " + message.author.username);
 
@@ -91,6 +104,9 @@ module.exports.run = async (client, message, args) => {
       }
       if (reaction.emoji.name === "🚦") {
         messageEmbed.edit(embed_help_4);
+      }
+      if (reaction.emoji.name === "💸"){
+        messageEmbed.edit(embed_help_5);  
       }
       if (reaction.emoji.name === "⬅️") {
         messageEmbed.edit(embed_help_1);
