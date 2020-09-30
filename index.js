@@ -99,7 +99,7 @@ client.on("message", async message => {
   command = command.slice(prefix.length);
   command = command.toLowerCase();
   
-  if (message.content.inclues("")){
+  if (message.content === (`<@${756590483165151302}>`)){
     message.channel.send("FALA CAMBADA IZIZIZI AQUI É XANDÃO PORA");
   };
   
