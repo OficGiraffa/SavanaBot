@@ -59,26 +59,16 @@ module.exports.run = async (client, message, args, prefix) => {
       return 0;
     });
     
-    console.log(voted_colls[0].first());
-    
-    let impostor = voted_colls[0].first().message.mentions.users.first();
-    //console.log(impostor);
-    
     let i = Math.floor(Math.random() * 1);
-
+  
+    
     if (i == 0){
-       /*message.channel.send(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
-                         " 　　　.　　　 　　.　　　　　。　　 。　.\n" +　
-                         ".　　 。　　　　　 ඞ 。 . 　　 • 　　　　•\n" +
-                         `　ﾟ　　 <@${impostor.id}> não era um impostor　 。　. \n` +
-                         ` '　　　 Você perderam!     　 　　。\n` +
-                              "　ﾟ　　　.　　　. ,　　　　.　 .");    */
       let msg_embed = new Discord.MessageEmbed()
       .setTitle("ATENÇÃO! Fim de jogo! Perderam!")
       .setDescription(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
                          " 　　　.　　　 　　.　　　　　。　　 。　.\n" +　
                          ".　　 。　　　　　 ඞ 。 . 　　 • 　　　　•\n" +
-                         `　ﾟ　　 <@${impostor.id}> não era um impostor　 。　. \n` +
+                         `　ﾟ　　 <@${voted_colls[0].first().message.mentions.users.first().id}> não era um impostor　 。　. \n` +
                          ` '　　　 Vocês perderam!     　 　　。\n` +
                               "　ﾟ　　　.　　　. ,　　　　.　 .")
       .setColor("RED")
@@ -91,7 +81,7 @@ module.exports.run = async (client, message, args, prefix) => {
       .setDescription(". 　　　。　　　　•　 　ﾟ　　。 　　. \n" +
                          " 　　　.　　　 　　.　　　　　。　　 。　.\n" +　
                          ".　　 。　　　　　 ඞ 。 . 　　 • 　　　　•\n" +
-                         `　ﾟ　　 <@${impostor.id}> era um impostor　 。　. \n` +
+                         `　ﾟ　　 <@${voted_colls[0].first().message.mentions.users.first().id}> era um impostor　 。　. \n` +
                          ` '　　　 Vocês ganharam!     　 　　。\n` +
                               "　ﾟ　　　.　　　. ,　　　　.　 .")
       .setColor("GREEN")
