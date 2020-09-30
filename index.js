@@ -99,9 +99,9 @@ client.on("message", async message => {
   command = command.slice(prefix.length);
   command = command.toLowerCase();
   
-  if (message.mentions.users.first() === client.bot){
+  if (message.isMentioned(client.user)){
     console.log("Vai toma nocu");
-    message.channel.send("FALA CAMBADA IZIZIZI AQUI É XANDÃO PORA");
+    //message.channel.send("FALA CAMBADA IZIZIZI AQUI É XANDÃO PORA");
   };
   
   try {
