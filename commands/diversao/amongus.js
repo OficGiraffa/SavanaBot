@@ -56,8 +56,20 @@ module.exports.run = async (client, message, args, prefix) => {
       if (a.first().count > b.first().count){
         return -1;
       }
-      return message.channel.send("Empate! Ninguém foi ejetado! Isso é perder! >: ( ");
+      return 0;
     });
+    
+    for (let i = 0; i < voted_colls.length; i++){
+      let i_ant = i;
+      let diferenças = 0;
+      if (!voted_colls[i] === voted_colls[i_ant]){
+        diferenças += 1;
+      } 
+      
+      if (diferenças === 0){
+        return message.channel.send("Empate!");
+      }
+    }
     
     let i = Math.floor(Math.random() * 2);
   
