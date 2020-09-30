@@ -50,10 +50,10 @@ module.exports.run = async (client, message, args, prefix) => {
 
   setTimeout(() => {
     voted_colls = voted_colls.sort((a, b) => {
-      if (a.first().count > b.first().count){
+      if (a.first().count < b.first().count){
         return 1;
       } 
-      if (a.first().count < b.first().count){
+      if (a.first().count > b.first().count){
         return -1;
       }
       return 0;
