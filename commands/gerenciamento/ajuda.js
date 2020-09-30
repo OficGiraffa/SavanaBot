@@ -70,7 +70,9 @@ module.exports.run = async (client, message, args) => {
         "\n" +
         "💼Comandos:\n" +
         "✋ =ajuda - Ajuda ;) \n" +
-        "🤖 =prefixo - Muda o prefixo atual para outro! Coloque na frente o prefixo desejado! \n"
+        "✋ =infos - Mais informações sobre o Bot \n" +
+        "🤖 =prefixo - Muda o prefixo atual para outro! Coloque na frente o prefixo desejado! \n" +
+        "✋ =h - Digite =h mais o nome de algum comando para ver informações sobre ele\n" 
     )
     .setFooter("Por: " + message.author.username);
 
